@@ -1,0 +1,16 @@
+{
+  "name": "cookie.clicker",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "deploy":"pnpm run build  && gh-pages -d dist",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.0.0",
+    "vite": "^4.4.5"
+  }
+}
