@@ -33,6 +33,7 @@
             // Mettez à jour le contenu des éléments
             document.getElementById("score").innerHTML = score;
             document.getElementById("cost-multiplicator").innerHTML = priceMultiplicator;
+            document.getElementById("lvl-multiplicator").innerHTML = multiplicator;
         } else {
             // Message d'erreur
             alert("Vous n'avez pas assez de crédits");
@@ -43,6 +44,7 @@
 
     let priceAutoClicker = 50
     let autoClicker = 0 // 1 clic par seconde
+    let lvlAutoClicker = 0;
 
     document.getElementById('cost-autoClicker').innerHTML = priceAutoClicker
 
@@ -63,6 +65,7 @@
             // Mettez à jour le contenu des éléments
             document.getElementById('score').innerHTML = score
             document.getElementById('cost-autoClicker').innerHTML = priceAutoClicker
+            document.getElementById("lvl-autoClicker").innerHTML = autoClicker;
         } else {
             // Message d'erreur
             alert("Vous n'avez pas assez de crédits")
