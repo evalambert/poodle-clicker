@@ -1,44 +1,76 @@
 (() => {
-    let clicks = 0;
+    let score = 0;
     let priceMultiplicator = 10; // Prix du multiplicateur début de partie 
     let multiplicator = 0; // Niveau du multiplicateur début de partie
 
-    // Sélectionnez les éléments par leur ID, pas par leur classe
-    document.getElementById("clicks").innerHTML = clicks;
-    document.getElementById("costMultiplicator").innerHTML = priceMultiplicator;
+    document.getElementById("score").innerHTML = score;
+    document.getElementById("cost-multiplicator").innerHTML = priceMultiplicator;
 
-    //JS CODE COOKIE CLIKER
-    document.querySelector('.btn-cookieClicker').addEventListener('click', function () {
+    //COOKIE-CLICKER //////////////////////////////////////////////////////////////
+    document.getElementById('btn-cookieClicker').addEventListener('click', function () {
         // A COMPLETER ! 
         // Condition pour faire en sorte que le multiplicator fonctionne sur le cookie.
 
         if(multiplicator>0){
-            clicks += 1*(multiplicator*2);
+             score += 1*(multiplicator*2);
         }
         else{
-            clicks += 1;
+            score += 1;
         }
         // Réaliser les deux autres conditions en fonction de votre cas
-        document.querySelector('.score').textContent = clicks;
+        document.getElementById('score').textContent = score;
     });
 
-    // Fonctionnement Multiplicator
-    document.getElementById("multiplicator").addEventListener("click", () => {
-        if (clicks >= priceMultiplicator) {
-            clicks -= priceMultiplicator;
+    // MULTIPLICATOR //////////////////////////////////////////////////////////////
+    document.getElementById("btn-multiplicator").addEventListener("click", () => {
+        if (score >= priceMultiplicator) {
+            score -= priceMultiplicator;
             priceMultiplicator *= 2;
             multiplicator +=1;
             // Historique de console
-            console.log("clicks : " + clicks + ", price : " + priceMultiplicator + " lvl : " + multiplicator);
+            console.log("clicks : " + score + ", price : " + priceMultiplicator + " lvl : " + multiplicator);
 
             // Mettez à jour le contenu des éléments
-            document.getElementById("clicks").innerHTML = clicks;
-            document.getElementById("costMultiplicator").innerHTML = priceMultiplicator;
+            document.getElementById("score").innerHTML = score;
+            document.getElementById("cost-multiplicator").innerHTML = priceMultiplicator;
         } else {
             // Message d'erreur
             alert("Vous n'avez pas assez de crédits");
         }
     });
+
+    // AUTOCLICK //////////////////////////////////////////////////////////////
+
+    let priceAutoClicker = 50
+    let autoClicker = 0 // 1 clic par seconde
+
+    document.getElementById('cost-autoClicker').innerHTML = priceAutoClicker
+
+    function click() {
+        score += autoClicker
+        document.getElementById('score').textContent = score
+    }
+
+    document.getElementById('btn-autoClicker').addEventListener('click', () => {
+        if (score >= priceAutoClicker) {
+            score -= priceAutoClicker
+            priceAutoClicker *= 3 // Augmente le coût 
+            autoClicker++
+
+            // Démarre le clic automatique
+            setInterval(click, 1000) // 1000 ms = 1 sec.
+
+            // Mettez à jour le contenu des éléments
+            document.getElementById('score').innerHTML = score
+            document.getElementById('cost-autoClicker').innerHTML = priceAutoClicker
+        } else {
+            // Message d'erreur
+            alert("Vous n'avez pas assez de crédits")
+        }
+    });
+
+
+    
 
 })();
 

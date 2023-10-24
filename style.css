@@ -23,7 +23,7 @@ section {
 }
 
 /* BTN */
-.btn {
+button {
   width: 100px;
   height: 100px;
   border-radius: 50%;
@@ -31,16 +31,16 @@ section {
   cursor: pointer;
 }
 
-.btn-autoClicker {
+#btn-autoClicker {
   background-color: blue;
 }
-.btn-multiplicator {
+#btn-multiplicator {
   background-color: green;
 }
-.btn-booster {
+#btn-booster {
   background-color: rgb(226, 226, 45);
 }
-.btn-cookieClicker {
+#btn-cookieClicker {
   width: 200px;
   height: 200px;
   border-radius: 50%;
