@@ -158,8 +158,8 @@
         div.appendChild(img);
         document.body.appendChild(div);
         
-        
     }
+    // Fonction pour créer un Cookie Joker
     function createGolden(createRandomDiv) {
         const div = document.createElement('div');
         div.className = 'golden-cookie';
@@ -172,7 +172,6 @@
           deleteAllLittleCookie();
           score *= 2;
           document.getElementById('score').innerHTML = score;
-
         });
   
         const img = document.createElement('img');
@@ -182,25 +181,23 @@
         div.appendChild(img);
         document.body.appendChild(div);
     }
+    // Fonction pour supprimer tout les div de class little-cookie
     function deleteAllLittleCookie() {
         const littleCookies = document.querySelectorAll('.little-cookie');
-      
         littleCookies.forEach(function (cookie) {
           cookie.remove();
         });
     }
-    // Apparition petits cookie et golden cookie 
+    // Apparition little cookie et golden cookie 
     document.getElementById('btn-cookieClicker').addEventListener('click', function() {
         let chance = 7;
-        const nombreRandom = Math.floor(Math.random() * 10) + 1; // 1 chance sur 50;
+        const nombreRandom = Math.floor(Math.random() * 50) + 1; // 1 chance sur 50;
         if(nombreRandom == 7){
             createGolden();
-            
         }
         else{
             createRandomDiv();
         }
     });
-      
 
 })();
