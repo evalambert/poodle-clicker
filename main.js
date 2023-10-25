@@ -1,4 +1,6 @@
 (() => {
+
+
     let score = 0; 
     let priceMultiplicator = 10; // Prix du multiplicator
     let multiplicator = 0; // Niveau du multiplicator
@@ -11,7 +13,25 @@
     document.getElementById("cost-multiplicator").innerHTML = priceMultiplicator;
     document.getElementById("cost-booster").innerHTML = boostPrice;
 
-    
+    // GDPR - Cookies //////////////////////////////////////////////////////////////
+    const gdprModal = document.getElementById("gdprModal");
+    const overlay = document.getElementById("overlay");
+    const acceptButton = document.getElementById("acceptButton");
+
+    // Check if the user has previously accepted the GDPR
+    const hasAcceptedGDPR = localStorage.getItem("gdprAccepted");
+
+    overlay.style.display = "block";
+    gdprModal.style.display = "block";
+
+    acceptButton.addEventListener("click", () => {
+        // Hide the modal and overlay
+        gdprModal.style.display = "none";
+        overlay.style.display = "none";
+
+        // Set a local storage flag to remember the user's consent
+        localStorage.setItem("gdprAccepted", "true");
+    });
     // COOKIE-CLICKER //////////////////////////////////////////////////////////////
     document.getElementById('btn-cookieClicker').addEventListener('click', function () {
         // Condition pour faire en sorte que le multiplicateur fonctionne sur le cookie.
