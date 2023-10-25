@@ -1,13 +1,77 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    
     <title>Vite App</title>
-    <script type="module" crossorigin src="/assets/index-3cfb730f.js"></script>
+    <script type="module" crossorigin src="/cookie-clicker/assets/index-72d3a14b.js"></script>
+    <link rel="stylesheet" href="/cookie-clicker/assets/index-2c8cc0b1.css">
   </head>
   <body>
+    <div class="wrapper">
+      <!-- HEADER ////////////  -->
+      <header>
+        <!-- BTN AUTO-CLICKER -->
+        <section id="autoClicker">
+          <button id="btn-autoClicker"></button>
+          <p>
+            AUTO-CLICKER — Cost:
+            <span id="cost-autoClicker">50</span>
+            Cookies
+          </p>
+          <p>Level 
+            <span id="lvl-autoClicker">0</span>
+          </p>
+        </section>
+
+        <!-- BTN MULTIPLICATOR -->
+        <section id="multiplicator">
+          <button id="btn-multiplicator"></button>
+          <p>
+            MULTIPLICATOR — Cost:
+            <span id="cost-multiplicator">100</span>
+            Cookies
+          </p>
+          <p>Level 
+            <span id="lvl-multiplicator">0</span>
+          </p>
+        </section>
+
+        <!-- BTN BOOSTER -->
+        <section id="booster">
+          <button id="btn-booster"></button>
+          <p>
+            BOOSTER — Cost:
+            <span id="cost-booster">500</span>
+            Cookies
+            <span id="timer-booster"></span>
+          </p>
+          <p>Level 
+            <span id="lvl-booster">0</span>
+          </p>
+        </section>
+      </header>
+
+      <!-- MAIN ////////////  -->
+      <main>
+        <!-- BTN  COOKIE-CLICKER -->
+        <button id="btn-cookieClicker"></button>
+        <h1>COOKIE CLICKER</h1>
+      </main>
+
+      <!-- FOOTER ////////////  -->
+      <footer>
+        <!-- SCORE -->
+        <p>
+          SCORE:
+          <span id="score">0</span>
+          Cookies
+        </p>
+      </footer>
+    </div>
     
   </body>
 </html>
