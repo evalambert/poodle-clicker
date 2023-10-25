@@ -160,7 +160,7 @@
         
         
     }
-    function createGolden() {
+    function createGolden(createRandomDiv) {
         const div = document.createElement('div');
         div.className = 'golden-cookie';
         div.style.left = Math.random() * (window.innerWidth - 20) + 'px';
@@ -169,6 +169,7 @@
         // Supprimer div au click + enlève 1 point au score
         div.addEventListener('click', () => {
           div.remove();
+          deleteAllLittleCookie();
           score *= 2;
           document.getElementById('score').innerHTML = score;
 
@@ -180,16 +181,21 @@
         img.style.height = '100%';
         div.appendChild(img);
         document.body.appendChild(div);
-        
-        
     }
-  
+    function deleteAllLittleCookie() {
+        const littleCookies = document.querySelectorAll('.little-cookie');
+      
+        littleCookies.forEach(function (cookie) {
+          cookie.remove();
+        });
+    }
     // Apparition petits cookie et golden cookie 
     document.getElementById('btn-cookieClicker').addEventListener('click', function() {
         let chance = 7;
-        const nombreRandom = Math.floor(Math.random() * 50) + 1; // 1 chance sur 50;
+        const nombreRandom = Math.floor(Math.random() * 10) + 1; // 1 chance sur 50;
         if(nombreRandom == 7){
             createGolden();
+            
         }
         else{
             createRandomDiv();
