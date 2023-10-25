@@ -135,8 +135,33 @@
         }
     });
 
+    // RAMDOM COOKIE /////////////////////////////////
+    // Fonction pour créer une div aléatoire avec une image
+    function createRandomDiv() {
+        const div = document.createElement('div');
+        div.className = 'little-cookie';
+        div.style.left = Math.random() * (window.innerWidth - 20) + 'px';
+        div.style.top = Math.random() * (window.innerHeight - 20) + 'px';
+  
+        // Supprimer div au click + enlève 1 point au score
+        div.addEventListener('click', () => {
+          div.remove();
+          score -= 1;
+          document.getElementById('score').innerHTML = score;
 
-    
+        });
+  
+        const img = document.createElement('img');
+        img.src = "img/cookie.png"; 
+        img.style.width = '100%';
+        img.style.height = '100%';
+        div.appendChild(img);
+  
+        document.body.appendChild(div);
+      }
+  
+      // Gestionnaire de clic pour le bouton
+      document.getElementById('btn-cookieClicker').addEventListener('click', createRandomDiv);
 
 })();
 
