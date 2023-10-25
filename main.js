@@ -51,10 +51,11 @@
         }
         else {
             score += 1;
+            
         }
 
         // Mettez à jour le contenu des éléments
-        document.getElementById('score').textContent = score;
+        
     });
 
     // MULTIPLICATOR //////////////////////////////////////////////////////////////
@@ -161,7 +162,8 @@
       }
   
       // Gestionnaire de clic pour le bouton
-      document.getElementById('btn-cookieClicker').addEventListener('click', createRandomDiv);
+      document.getElementById('score').textContent = score;
+      
 
 })();
 
