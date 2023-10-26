@@ -97,7 +97,7 @@
 }
 
 /* COOKIES  //////////////////////////////////// */
-.little-cookie { 
+.little-cookie {
   width: 75px;
   height: 75px;
   position: absolute;
@@ -117,6 +117,7 @@ header {
   width: 70%;
   display: flex;
   flex-direction: column;
+  border: 1px solid blue;
 }
 
 /* BTN COOKIE-CLICKER */
@@ -138,39 +139,53 @@ h1 {
 
 /* MAIN  //////////////////////////////////// */
 main {
+  width: 30%;
   display: flex;
   flex-direction: column;
   gap: 20px;
   padding: 30px;
+  border: 1px solid red;
 }
 
 main .btn {
-  padding: 20px;
+  padding: 20px 30px;
   background-color: #d5d2fc;
   border-radius: 20px;
-  height: 150px;
+  height: 130px;
   cursor: none;
 }
-
 .btn-action {
-  width: 500px;
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  border-radius: 30px;
+  background: #d5d2fc;
+  border-radius: 30px;
+  border-radius: 30px;
+  box-shadow:
+    3px 3px 3px 0px rgba(255, 255, 255, 0.63) inset,
+    -3px -3px 3px 0px rgba(0, 0, 0, 0.75) inset;
 }
 
+#screen-score {
+  box-shadow: 5px 5px 5px 0px rgba(56, 56, 56, 0.528) inset;
+}
 .btn-other {
-  width: 240px;
+  width: 50%;
+  box-shadow:
+    3px 3px 3px 0px rgba(255, 255, 255, 0.63) inset,
+    -3px -3px 3px 0px rgba(0, 0, 0, 0.75) inset;
 }
-
 #info-and-reset {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  gap: 20px;
 }
 
 .icon {
-  height: 100px;
+  height: 90px;
   align-self: center;
 }
 
@@ -183,7 +198,6 @@ footer {
 .golden-cookie {
   width: 50px;
   height: 50px;
-  
+
   position: absolute;
 }
-
