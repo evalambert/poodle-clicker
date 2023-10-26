@@ -200,4 +200,57 @@
         }
     });
 
+
+    /////CURSOR CHANGEMENT////////
+    document.getElementById('acceptButton').addEventListener('click', function() {
+        const cursor = document.querySelector('.custom-cursor');
+        cursor.style.display = "block"; // CHANGE LE CURSOR IN DISPLAY BLOCK 
+
+        document.addEventListener('mousemove', function(e) {
+            cursor.style.left = `${e.clientX - 25}px`;
+            cursor.style.top = `${e.clientY}px`;
+        });
+    });
+
+    //HOVER TEXT////////////////////////
+    document.addEventListener('DOMContentLoaded', function() {
+        const btnBooster = document.getElementById('btn-booster');
+        const scoreSpan = document.getElementById('score');
+
+        btnBooster.addEventListener('mouseover', function() {
+          scoreSpan.textContent = 'Nuovo Contenuto'; // "Changer le contenu de la balise span au survol"
+        });
+
+        btnBooster.addEventListener('mouseout', function() {
+          scoreSpan.textContent = score ; //"Rétablir le contenu d'origine de la balise span à la sortie de la souris"
+        });
+      });
+      document.addEventListener('DOMContentLoaded', function() {
+        const btnBooster = document.getElementById('btn-multiplicator');
+        const scoreSpan = document.getElementById('score');
+
+        btnBooster.addEventListener('mouseover', function() {
+          scoreSpan.textContent = 'contenuto due ';//"Changer le contenu de la balise span au survol"
+        });
+
+        btnBooster.addEventListener('mouseout', function() {
+          scoreSpan.textContent = score; // "Rétablir le contenu d'origine de la balise span à la sortie de la souris"
+        });
+
+      });
+
+      document.addEventListener('DOMContentLoaded', function() {
+        const btnBooster = document.getElementById('btn-autoClicker');
+        const scoreSpan = document.getElementById('score');
+
+        btnBooster.addEventListener('mouseover', function() {
+          scoreSpan.textContent = 'contenuto tre '; //"Changer le contenu de la balise span au survol"
+        });
+
+        btnBooster.addEventListener('mouseout', function() {
+          scoreSpan.textContent = score; // "Rétablir le contenu d'origine de la balise span à la sortie de la souris"
+        });
+      });
+
+
 })();
