@@ -19,6 +19,9 @@
     // Instructions PopUp //////////////////////////////////////////////////////////
     const instructionModal = document.getElementById("bloc-instruction");
     const instructionClose = document.getElementById("close-instruction");
+    // Game Over PopUp /////////////////////////////////////////////////////////////
+    const gameOverModal = document.getElementById("bloc-game-over");
+    const gameOverClose = document.getElementById("close-GameOver");
 
     // Check if the user has previously accepted the GDPR
     const hasAcceptedGDPR = localStorage.getItem("gdprAccepted");
@@ -35,9 +38,14 @@
         instructionModal.style.display = "block";
     });
     // Fermer le PopUp Instructions
+    let interval;
+    let time = 0;
     instructionClose.addEventListener("click", () => {
         instructionModal.style.display = "none";
         overlay.style.display = "none";
+        if (!interval) {
+            interval = setInterval(updateTimer, 1000); // Mettre à jour le minuteur toutes les 1000 ms (1 seconde)
+        }
     });
     // COOKIE-CLICKER //////////////////////////////////////////////////////////////
     document.getElementById('btn-cookieClicker').addEventListener('click', function () {
@@ -84,7 +92,6 @@
     // AUTOCLICK //////////////////////////////////////////////////////////////
     let priceAutoClicker = 50;
     let autoClicker = 0; // 1 clic par seconde
-    let lvlAutoClicker = 0;
 
     document.getElementById('cost-autoClicker').innerHTML = priceAutoClicker;
 
@@ -192,8 +199,12 @@
     // Fonction pour supprimer tout les div de class little-cookie
     function deleteAllLittleCookie() {
         const littleCookies = document.querySelectorAll('.little-cookie');
+        const goldCookies = document.querySelectorAll('.golden-cookie');
         littleCookies.forEach(function (cookie) {
           cookie.remove();
+        });
+        goldCookies.forEach(function (cookie) {
+            cookie.remove();
         });
     }
     // Apparition little cookie et golden cookie 
@@ -232,8 +243,8 @@
         btnBooster.addEventListener('mouseout', function() {
           scoreSpan.textContent = "COOCKIE: " + score; ; //"Rétablir le contenu d'origine de la balise span à la sortie de la souris"
         });
-      });
-      document.addEventListener('DOMContentLoaded', function() {
+    });
+    document.addEventListener('DOMContentLoaded', function() {
         const btnBooster = document.getElementById('btn-multiplicator');
         const scoreSpan = document.getElementById('score');
 
@@ -244,10 +255,9 @@
         btnBooster.addEventListener('mouseout', function() {
           scoreSpan.textContent =  "COOCKIE: " + score;; // "Rétablir le contenu d'origine de la balise span à la sortie de la souris"
         });
+    });
 
-      });
-
-      document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
         const btnBooster = document.getElementById('btn-autoClicker');
         const scoreSpan = document.getElementById('score');
 
@@ -258,12 +268,61 @@
         btnBooster.addEventListener('mouseout', function() {
           scoreSpan.textContent = "COOCKIE: " + score; // "Rétablir le contenu d'origine de la balise span à la sortie de la souris"
         });
-      });
+    });
 
-      // Bouton INFO ////////////////
-      document.getElementById("btn-info").addEventListener("click", () => {
+    // Bouton INFO ////////////////
+    document.getElementById("btn-info").addEventListener("click", () => {
         overlay.style.display = "block";
         instructionModal.style.display = "block";
-      });
-
+    });
+    
+    // Bouton Game Over ////////////////
+    document.getElementById("btn-reset").addEventListener("click", () => {
+        gameOverModal.style.display = "block";
+        overlay.style.display = "block";
+        document.getElementById("score-final").innerText = score;
+        document.getElementById("temps-jeu").innerText = secondsToHMS(time);
+        document.getElementById("autoClick-final").innerText = autoClicker;
+        document.getElementById("multiplicator-final").innerText = multiplicator;
+        document.getElementById("boost-final").innerText = lvlBooster;
+        clearInterval(interval);
+        interval = null;
+    });
+    function updateTimer() {
+        time++;
+    }
+    function secondsToHMS(time) {
+        const hours = Math.floor(time / 3600);
+        const minutes = Math.floor((time % 3600) / 60);
+        const seconds = time % 60;
+        if (hours > 0) {
+            return heures + " heures " + minutes + " minutes "+ seconds + " secondes";
+        }
+        else if (minutes > 0) {
+            return minutes + " minutes "+ seconds + " secondes";
+        }
+        else {
+            return seconds + " secondes";
+        }
+    }
+    document.getElementById("close-GameOver").addEventListener("click", () => {
+        gameOverModal.style.display = "none";
+        overlay.style.display = "none";
+        score = 0;
+        autoClicker = 0;
+        lvlBooster = 0;
+        multiplicator = 0;
+        boostPrice = 50;
+        priceMultiplicator = 10;
+        priceAutoClicker = 50;
+        deleteAllLittleCookie();
+        document.getElementById("timer-booster").style.display = "none";
+        document.getElementById("score").innerHTML = score;
+        document.getElementById("cost-autoClicker").innerHTML = priceAutoClicker;
+        document.getElementById("lvl-autoClicker").innerHTML = autoClicker;
+        document.getElementById("cost-multiplicator").innerHTML = priceMultiplicator;
+        document.getElementById("lvl-multiplicator").innerHTML = multiplicator;
+        document.getElementById("cost-booster").innerHTML = boostPrice;
+        document.getElementById("lvl-booster").innerHTML = lvlBooster;
+    });
 })();
