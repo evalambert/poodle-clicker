@@ -106,6 +106,7 @@ h1 {
   margin: 50px 0 50px 50px;
 }
 /* MAIN  //////////////////////////////////// */
+
 main {
   display: flex;
   flex-direction: column;
@@ -113,7 +114,7 @@ main {
   padding: 30px;
 }
 
-main button {
+main .btn {
   padding: 20px;
   background-color: #d5d2fc;
   border-radius: 20px;
@@ -127,14 +128,14 @@ main button {
   justify-content: space-between;
 }
 
+.btn-other {
+  width: 240px;
+}
+
 #info-and-reset {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-}
-
-.btn-other {
-  width: 240px;
 }
 
 .icon {
