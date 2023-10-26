@@ -1,6 +1,5 @@
 (() => {
 
-
     let score = 0; 
     let priceMultiplicator = 10; // Prix du multiplicator
     let multiplicator = 0; // Niveau du multiplicator
@@ -39,6 +38,7 @@
             if(boostActive){
                 // Si le multiplicator est déjà activé précédement et que le boost est activé
                 score += 1 * (multiplicator * 2)*5;
+
             }
             else{
                 score += 1 * (multiplicator * 2);
@@ -156,14 +156,48 @@
         img.style.width = '100%';
         img.style.height = '100%';
         div.appendChild(img);
-  
         document.body.appendChild(div);
-      }
+        
+    }
+    // Fonction pour créer un Cookie Joker
+    function createGolden(createRandomDiv) {
+        const div = document.createElement('div');
+        div.className = 'golden-cookie';
+        div.style.left = Math.random() * (window.innerWidth - 20) + 'px';
+        div.style.top = Math.random() * (window.innerHeight - 20) + 'px';
   
-      // Gestionnaire de clic pour le bouton
-      document.getElementById('btn-cookieClicker').addEventListener('click', createRandomDiv);
+        // Supprimer div au click + enlève 1 point au score
+        div.addEventListener('click', () => {
+          div.remove();
+          deleteAllLittleCookie();
+          score *= 2;
+          document.getElementById('score').innerHTML = score;
+        });
+  
+        const img = document.createElement('img');
+        img.src = "img/dog-biscuit.png";
+        img.style.width = '100%';
+        img.style.height = '100%';
+        div.appendChild(img);
+        document.body.appendChild(div);
+    }
+    // Fonction pour supprimer tout les div de class little-cookie
+    function deleteAllLittleCookie() {
+        const littleCookies = document.querySelectorAll('.little-cookie');
+        littleCookies.forEach(function (cookie) {
+          cookie.remove();
+        });
+    }
+    // Apparition little cookie et golden cookie 
+    document.getElementById('btn-cookieClicker').addEventListener('click', function() {
+        let chance = 7;
+        const nombreRandom = Math.floor(Math.random() * 50) + 1; // 1 chance sur 50;
+        if(nombreRandom == 7){
+            createGolden();
+        }
+        else{
+            createRandomDiv();
+        }
+    });
 
 })();
-
-
-  
