@@ -70,7 +70,7 @@
         }
 
         // Mettez à jour le contenu des éléments
-        document.getElementById('score').textContent = "COOCKIE: " + score;;
+        document.getElementById('score').textContent = "COOKIE: " + score;;
     });
 
     // MULTIPLICATOR //////////////////////////////////////////////////////////////
@@ -241,7 +241,7 @@
         });
 
         btnBooster.addEventListener('mouseout', function() {
-          scoreSpan.textContent = "COOCKIE: " + score; ; //"Rétablir le contenu d'origine de la balise span à la sortie de la souris"
+          scoreSpan.textContent = "COOKIE: " + score; ; //"Rétablir le contenu d'origine de la balise span à la sortie de la souris"
         });
     });
     document.addEventListener('DOMContentLoaded', function() {
@@ -253,7 +253,7 @@
         });
 
         btnBooster.addEventListener('mouseout', function() {
-          scoreSpan.textContent =  "COOCKIE: " + score;; // "Rétablir le contenu d'origine de la balise span à la sortie de la souris"
+          scoreSpan.textContent =  "COOKIE: " + score;; // "Rétablir le contenu d'origine de la balise span à la sortie de la souris"
         });
     });
 
@@ -266,7 +266,7 @@
         });
 
         btnBooster.addEventListener('mouseout', function() {
-          scoreSpan.textContent = "COOCKIE: " + score; // "Rétablir le contenu d'origine de la balise span à la sortie de la souris"
+          scoreSpan.textContent = "COOKIE: " + score; // "Rétablir le contenu d'origine de la balise span à la sortie de la souris"
         });
     });
 
