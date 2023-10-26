@@ -52,22 +52,20 @@
       <button id="close-instruction" class="close-instruction">X</button>
     </div>
     <!-- GAME OVER ////////////  -->
-    <div id="bloc-game-over" class="bloc-game-over">
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat
-        obcaecati beatae quasi, officia itaque doloribus. Eius repellendus
-        cupiditate perferendis, modi alias quae maxime aperiam, unde vitae
-        quaerat illo distinctio nihil. Officia facilis eum ipsam quasi sit
-        itaque tempore dolore magni numquam reprehenderit error, eos voluptates
-        quod quos cumque quisquam delectus modi molestiae minus doloremque iusto
-        sequi. Dignissimos numquam voluptatibus facere. Corporis minus dicta
-        porro. Quo, repudiandae, necessitatibus illum dolores nostrum iste ea
-        quod numquam ab eos eum adipisci qui accusantium commodi minus
-        consequatur nobis unde sunt fuga voluptate voluptatibus obcaecati.
-      </p>
-      <button>X</button>
-    </div>
 
+    <div id="bloc-game-over">
+      <div class="gameOver-content">
+        <h2>Game Over</h2>
+        <h3>Résumé de la partie</h3>
+        <p>Score : <span id="score-final">0</span></p>
+        <p>Temps de jeu : <span id="temps-jeu">time</span></p>
+        <p>LvL Auto Click : <span id="autoClick-final">0</span></p>
+        <p>LvL Multiplicator : <span id="multiplicator-final">0</span></p>
+        <p>LvL Boost : <span id="boost-final">time</span></p>
+      </div>
+      <button id="close-GameOver">Terminer Partie</button>
+    </div>
+        
     <!-- WRAPPER ////////////  -->
     <div class="wrapper">
       <!-- HEADER ////////////  -->
@@ -84,6 +82,7 @@
         <!-- SCREEN SCORE -->
         <section id="screen-score" class="btn">
           <p>
+           
             <span id="score">0</span>
             <span id="timer-booster"></span>
           </p>
