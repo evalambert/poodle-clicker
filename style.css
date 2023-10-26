@@ -105,6 +105,7 @@
 
 /* CURSOR  //////////////////////////////////// */
 .custom-cursor {
+  display: none;
   position: absolute;
   pointer-events: none;
   width: 70px;
@@ -120,6 +121,7 @@ header {
 
 /* BTN COOKIE-CLICKER */
 #btn-cookieClicker {
+  cursor: none;
   max-width: 530px;
   height: auto;
   margin: 0 auto;
@@ -147,6 +149,7 @@ main .btn {
   background-color: #d5d2fc;
   border-radius: 20px;
   height: 150px;
+  cursor: none;
 }
 
 .btn-action {
