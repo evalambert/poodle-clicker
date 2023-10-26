@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -20,32 +20,54 @@
     </div>
 
     <!-- INSTRUCTION ////////////  -->
-    <div id="bloc-instruction">
-      <div class="instruction-content">
-        <h2>Caniche Clicker</h2>
-        <h3>Objectif : Obtenir le plus d'os avant le Game Over</h3>
-        <p><img src="#" alt="caniche-info">Caresser le caniche pour obtenir des os</p>
-        <p><img src="#" alt="os-info">Casser des os vous retire un point</p>
+    <div id="bloc-instruction" class="bloc-instruction">
+      <h2>Poddle Clicker</h2>
+      <h3>Objectif : Obtenir le plus de crookette avant le Game Over</h3>
+      <div class="instruction-element">
+        <img src="img/caniche.png" alt="caniche-info" />
+        <p>Caresser le Poddle pour obtenir le plus de crookettes</p>
       </div>
-      <button id="close-instruction">X</button>
+      <div class="instruction-element">
+        <img src="/img/cookie.png" alt="os-info" />
+        <p>Attentions ! Manger des croukettes vous ôtes des points</p>
+      </div>
+      <div class="instruction-element">
+        <img src="/img/calculator.png" alt="os-info" />
+        <p>Utiliser le multiplicator pour décupler vos gains</p>
+      </div>
+      <div class="instruction-element">
+        <img src="/img/cursor.png" alt="os-info" />
+        <p>Utiliser l'Auto Click pour recevoir des os automatiquement</p>
+      </div>
+      <div class="instruction-element">
+        <img src="/img/sablier.png" alt="os-info" />
+        <p>
+          Utiliser le Boost de 30 secondes pour augmenter encore plus vos gains
+        </p>
+      </div>
+      <div class="instruction-element">
+        <img src="/img/dog-biscuit.png" alt="os-info" />
+        <p>Attraper l'os en OR pour muliplier vos gains par 2 !</p>
+      </div>
+      <button id="close-instruction" class="close-instruction">X</button>
     </div>
-        <!-- GAME OVER ////////////  -->
-        <div id="bloc-game-over">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat
-            obcaecati beatae quasi, officia itaque doloribus. Eius repellendus
-            cupiditate perferendis, modi alias quae maxime aperiam, unde vitae
-            quaerat illo distinctio nihil. Officia facilis eum ipsam quasi sit
-            itaque tempore dolore magni numquam reprehenderit error, eos voluptates
-            quod quos cumque quisquam delectus modi molestiae minus doloremque iusto
-            sequi. Dignissimos numquam voluptatibus facere. Corporis minus dicta
-            porro. Quo, repudiandae, necessitatibus illum dolores nostrum iste ea
-            quod numquam ab eos eum adipisci qui accusantium commodi minus
-            consequatur nobis unde sunt fuga voluptate voluptatibus obcaecati.
-          </p>
-          <button>X</button>
-        </div>
-        
+    <!-- GAME OVER ////////////  -->
+    <div id="bloc-game-over" class="bloc-game-over">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat
+        obcaecati beatae quasi, officia itaque doloribus. Eius repellendus
+        cupiditate perferendis, modi alias quae maxime aperiam, unde vitae
+        quaerat illo distinctio nihil. Officia facilis eum ipsam quasi sit
+        itaque tempore dolore magni numquam reprehenderit error, eos voluptates
+        quod quos cumque quisquam delectus modi molestiae minus doloremque iusto
+        sequi. Dignissimos numquam voluptatibus facere. Corporis minus dicta
+        porro. Quo, repudiandae, necessitatibus illum dolores nostrum iste ea
+        quod numquam ab eos eum adipisci qui accusantium commodi minus
+        consequatur nobis unde sunt fuga voluptate voluptatibus obcaecati.
+      </p>
+      <button>X</button>
+    </div>
+
     <!-- WRAPPER ////////////  -->
     <div class="wrapper">
       <!-- HEADER ////////////  -->
@@ -129,9 +151,8 @@
       </footer>
 
       <div class="custom-cursor">
-        <img src="img/cursor.png" alt="">
+        <img src="img/cursor.png" alt="" />
       </div>
-
     </div>
     <script type="module" src="main.js"></script>
   </body>
