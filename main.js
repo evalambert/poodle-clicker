@@ -8,7 +8,7 @@
     let lvlBooster = 0; // Niveau du booster
     let boostPrice = 50; // Prix du boost
 
-    document.getElementById("score").innerHTML = "COOKIE: " + score;
+    document.getElementById("score").innerHTML = score;
     document.getElementById("cost-multiplicator").innerHTML = priceMultiplicator;
     document.getElementById("cost-booster").innerHTML = boostPrice;
 
@@ -16,20 +16,28 @@
     const gdprModal = document.getElementById("gdprModal");
     const overlay = document.getElementById("overlay");
     const acceptButton = document.getElementById("acceptButton");
+    // Instructions PopUp //////////////////////////////////////////////////////////
+    const instructionModal = document.getElementById("bloc-instruction");
+    const instructionClose = document.getElementById("close-instruction");
 
     // Check if the user has previously accepted the GDPR
     const hasAcceptedGDPR = localStorage.getItem("gdprAccepted");
 
     overlay.style.display = "block";
     gdprModal.style.display = "block";
+    
 
+    // Fermer le PopUp Cookie GDPR
     acceptButton.addEventListener("click", () => {
-        // Hide the modal and overlay
         gdprModal.style.display = "none";
+        
+        // Afficher le bloc d'instructions
+        instructionModal.style.display = "block";
+    });
+    // Fermer le PopUp Instructions
+    instructionClose.addEventListener("click", () => {
+        instructionModal.style.display = "none";
         overlay.style.display = "none";
-
-        // Set a local storage flag to remember the user's consent
-        localStorage.setItem("gdprAccepted", "true");
     });
     // COOKIE-CLICKER //////////////////////////////////////////////////////////////
     document.getElementById('btn-cookieClicker').addEventListener('click', function () {
@@ -54,7 +62,7 @@
         }
 
         // Mettez à jour le contenu des éléments
-        document.getElementById('score').textContent ="COOKIE: " + score;
+        document.getElementById('score').textContent = score;
     });
 
     // MULTIPLICATOR //////////////////////////////////////////////////////////////
@@ -218,11 +226,11 @@
         const scoreSpan = document.getElementById('score');
 
         btnBooster.addEventListener('mouseover', function() {
-          scoreSpan.textContent = 'BOOSTER'; // "Changer le contenu de la balise span au survol"
+          scoreSpan.textContent = 'Nuovo Contenuto'; // "Changer le contenu de la balise span au survol"
         });
 
         btnBooster.addEventListener('mouseout', function() {
-          scoreSpan.textContent =  "COOKIE: " + score ; //"Rétablir le contenu d'origine de la balise span à la sortie de la souris"
+          scoreSpan.textContent = score ; //"Rétablir le contenu d'origine de la balise span à la sortie de la souris"
         });
       });
       document.addEventListener('DOMContentLoaded', function() {
@@ -230,11 +238,11 @@
         const scoreSpan = document.getElementById('score');
 
         btnBooster.addEventListener('mouseover', function() {
-          scoreSpan.textContent = 'MULTIPLICATOR';//"Changer le contenu de la balise span au survol"
+          scoreSpan.textContent = 'contenuto due ';//"Changer le contenu de la balise span au survol"
         });
 
         btnBooster.addEventListener('mouseout', function() {
-          scoreSpan.textContent = "COOKIE: " + score ; // "Rétablir le contenu d'origine de la balise span à la sortie de la souris"
+          scoreSpan.textContent = score; // "Rétablir le contenu d'origine de la balise span à la sortie de la souris"
         });
 
       });
@@ -244,13 +252,18 @@
         const scoreSpan = document.getElementById('score');
 
         btnBooster.addEventListener('mouseover', function() {
-          scoreSpan.textContent = 'AUTOCLICKER '; //"Changer le contenu de la balise span au survol"
+          scoreSpan.textContent = 'contenuto tre '; //"Changer le contenu de la balise span au survol"
         });
 
         btnBooster.addEventListener('mouseout', function() {
-          scoreSpan.textContent = "COOKIE: " + score ; // "Rétablir le contenu d'origine de la balise span à la sortie de la souris"
+          scoreSpan.textContent = score; // "Rétablir le contenu d'origine de la balise span à la sortie de la souris"
         });
       });
 
+      // Bouton INFO ////////////////
+      document.getElementById("btn-info").addEventListener("click", () => {
+        overlay.style.display = "block";
+        instructionModal.style.display = "block";
+      });
 
 })();
