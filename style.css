@@ -63,6 +63,7 @@
 
 /* INSTRUCTIONS  //////////////////////////////////// */
 #bloc-instruction {
+  cursor: none;
   position: fixed;
   width: 70%;
   height: 70%;
@@ -98,6 +99,7 @@
 
 /* COOKIES  //////////////////////////////////// */
 .little-cookie {
+  cursor: none;
   width: 75px;
   height: 75px;
   position: absolute;
@@ -200,4 +202,7 @@ footer {
   height: 50px;
 
   position: absolute;
+}
+.close-instruction{ 
+   cursor: none;
 }
