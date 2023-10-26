@@ -9,70 +9,113 @@
     <title>Vite App</title>
   </head>
   <body>
+    <!-- GDPR COOKIE ////////////  -->
     <div class="overlay" id="overlay"></div>
     <div class="gdpr-modal" id="gdprModal">
-        <p>Bienvenue sur notre Cookie Clicker !!! Pour accéder à celui-ci et y jouer veuillez accepter ce Cookie.</p>
-        <button class="gdpr-accept" id="acceptButton">Accept</button>
+      <p>
+        Bienvenue sur notre Cookie Clicker !!! Pour accéder à celui-ci et y
+        jouer veuillez accepter ce Cookie.
+      </p>
+      <button class="gdpr-accept" id="acceptButton">Accept</button>
     </div>
+
+    <!-- INSTRUCTION ////////////  -->
+    <div id="bloc-instruction">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat
+        obcaecati beatae quasi, officia itaque doloribus. Eius repellendus
+        cupiditate perferendis, modi alias quae maxime aperiam, unde vitae
+        quaerat illo distinctio nihil. Officia facilis eum ipsam quasi sit
+        itaque tempore dolore magni numquam reprehenderit error, eos voluptates
+        quod quos cumque quisquam delectus modi molestiae minus doloremque iusto
+        sequi. Dignissimos numquam voluptatibus facere. Corporis minus dicta
+        porro. Quo, repudiandae, necessitatibus illum dolores nostrum iste ea
+        quod numquam ab eos eum adipisci qui accusantium commodi minus
+        consequatur nobis unde sunt fuga voluptate voluptatibus obcaecati.
+      </p>
+      <button>X</button>
+    </div>
+
+    <!-- WRAPPER ////////////  -->
     <div class="wrapper">
       <!-- HEADER ////////////  -->
       <header>
-        <!-- BTN AUTO-CLICKER -->
-        <section id="autoClicker">
-          <button id="btn-autoClicker"></button>
-          <p>
-            AUTO-CLICKER — Cost:
-            <span id="cost-autoClicker">50</span>
-            Cookies
-          </p>
-          <p>Level 
-            <span id="lvl-autoClicker">0</span>
-          </p>
-        </section>
-
-        <!-- BTN MULTIPLICATOR -->
-        <section id="multiplicator">
-          <button id="btn-multiplicator"></button>
-          <p>
-            MULTIPLICATOR — Cost:
-            <span id="cost-multiplicator">100</span>
-            Cookies
-          </p>
-          <p>Level 
-            <span id="lvl-multiplicator">0</span>
-          </p>
-        </section>
-
-        <!-- BTN BOOSTER -->
-        <section id="booster">
-          <button id="btn-booster"></button>
-          <p>
-            BOOSTER — Cost:
-            <span id="cost-booster">500</span>
-            Cookies
-            <span id="timer-booster"></span>
-          </p>
-          <p>Level 
-            <span id="lvl-booster">0</span>
-          </p>
-        </section>
+        <h1>Poddle Clicker</h1>
+        <!-- BTN  COOKIE-CLICKER -->
+        <button id="btn-cookieClicker">
+          <img src="img/caniche.png" alt="" />
+        </button>
       </header>
 
       <!-- MAIN ////////////  -->
       <main>
-        <!-- BTN  COOKIE-CLICKER -->
-        <button id="btn-cookieClicker"></button>
-        <h1>COOKIE CLICKER</h1>
+        <!-- SCREEN SCORE -->
+        <section id="screen-score" class="btn">
+          <p>
+            COOKIES : <span id="score">0</span>
+            <span id="timer-booster"></span>
+          </p>
+        </section>
+
+        <!-- BTN AUTO-CLICKER -->
+        <section id="autoClicker">
+          <button id="btn-autoClicker" class="btn btn-action">
+            <div class="icon">
+              <img src="img/cursor.png" alt="icon auto-clicker" />
+            </div>
+            <div class="info">
+              <p>Cost: <span id="cost-autoClicker">50</span></p>
+              <p>Level: <span id="lvl-autoClicker">0</span></p>
+            </div>
+          </button>
+        </section>
+
+        <!-- BTN MULTIPLICATOR -->
+        <section id="multiplicator">
+          <button id="btn-multiplicator" class="btn btn-action">
+            <div class="icon">
+              <img src="img/calculator.png" alt="icon multiplicator" />
+            </div>
+            <div class="info">
+              <p>Cost: <span id="cost-multiplicator">100</span></p>
+              <p>Level: <span id="lvl-multiplicator">0</span></p>
+            </div>
+          </button>
+        </section>
+
+        <!-- BTN BOOSTER -->
+        <section id="booster">
+          <button id="btn-booster" class="btn btn-action">
+            <div class="icon">
+              <img src="img/sablier.png" alt="icon booster" />
+            </div>
+            <div class="info">
+              <p>Cost: <span id="cost-booster">500</span></p>
+              <p>Level: <span id="lvl-booster">0</span></p>
+            </div>
+          </button>
+        </section>
+
+        <!-- BTN INFO + BTN RESET -->
+        <section id="info-and-reset">
+          <button id="btn-info" class="btn btn-other">
+            <!--  <div class="icon">
+              <img src="img/sablier.png" alt="icon info" />
+            </div> -->
+            <p>INFO</p>
+          </button>
+          <button id="btn-reset" class="btn btn-other">
+            <!--  <div class="icon">
+              <img src="img/sablier.png" alt="icon reset" />
+            </div> -->
+            <p>RESET</p>
+          </button>
+        </section>
       </main>
 
       <!-- FOOTER ////////////  -->
       <footer>
-        <!-- SCORE -->
-        <p>
-          SCORE:
-          <span id="score">0</span>
-          Cookies
-        </p>
+        <p>2023, Ema, Thomas & Eva</p>
       </footer>
     </div>
     <script type="module" src="main.js"></script>
