@@ -62,7 +62,7 @@
         }
 
         // Mettez à jour le contenu des éléments
-        document.getElementById('score').textContent = score;
+        document.getElementById('score').textContent = "COOCKIE: " + score;;
     });
 
     // MULTIPLICATOR //////////////////////////////////////////////////////////////
@@ -155,7 +155,7 @@
         div.addEventListener('click', () => {
           div.remove();
           score -= 1;
-          document.getElementById('score').innerHTML = score;
+          document.getElementById('score').innerHTML = "COOKIE: " + score;
 
         });
   
@@ -226,11 +226,11 @@
         const scoreSpan = document.getElementById('score');
 
         btnBooster.addEventListener('mouseover', function() {
-          scoreSpan.textContent = 'Nuovo Contenuto'; // "Changer le contenu de la balise span au survol"
+          scoreSpan.textContent = 'BOOSTER'; // "Changer le contenu de la balise span au survol"
         });
 
         btnBooster.addEventListener('mouseout', function() {
-          scoreSpan.textContent = score ; //"Rétablir le contenu d'origine de la balise span à la sortie de la souris"
+          scoreSpan.textContent = "COOCKIE: " + score; ; //"Rétablir le contenu d'origine de la balise span à la sortie de la souris"
         });
       });
       document.addEventListener('DOMContentLoaded', function() {
@@ -238,11 +238,11 @@
         const scoreSpan = document.getElementById('score');
 
         btnBooster.addEventListener('mouseover', function() {
-          scoreSpan.textContent = 'contenuto due ';//"Changer le contenu de la balise span au survol"
+          scoreSpan.textContent = 'MULTIPLICATOR';//"Changer le contenu de la balise span au survol"
         });
 
         btnBooster.addEventListener('mouseout', function() {
-          scoreSpan.textContent = score; // "Rétablir le contenu d'origine de la balise span à la sortie de la souris"
+          scoreSpan.textContent =  "COOCKIE: " + score;; // "Rétablir le contenu d'origine de la balise span à la sortie de la souris"
         });
 
       });
@@ -252,11 +252,11 @@
         const scoreSpan = document.getElementById('score');
 
         btnBooster.addEventListener('mouseover', function() {
-          scoreSpan.textContent = 'contenuto tre '; //"Changer le contenu de la balise span au survol"
+          scoreSpan.textContent = 'AUTOCLICKER'; //"Changer le contenu de la balise span au survol"
         });
 
         btnBooster.addEventListener('mouseout', function() {
-          scoreSpan.textContent = score; // "Rétablir le contenu d'origine de la balise span à la sortie de la souris"
+          scoreSpan.textContent = "COOCKIE: " + score; // "Rétablir le contenu d'origine de la balise span à la sortie de la souris"
         });
       });
 
