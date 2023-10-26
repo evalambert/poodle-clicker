@@ -49,6 +49,7 @@
 /* WRAPPER //////////////////////////////////// */
 /* //////////////////////////////////////////// */
 .wrapper {
+  cursor: none;
   background-color: #b5b1e7;
   width: 100%;
   height: 100vh;
@@ -85,18 +86,28 @@
   position: absolute;
 }
 
+/* CURSOR  //////////////////////////////////// */
+.custom-cursor {
+  position: absolute;
+  pointer-events: none;
+  width: 70px;
+  z-index: 10000;
+}
+
 /* HEADER  //////////////////////////////////// */
 header {
   width: 70%;
   display: flex;
   flex-direction: column;
 }
+
 /* BTN COOKIE-CLICKER */
 #btn-cookieClicker {
   max-width: 530px;
   height: auto;
   margin: 0 auto;
 }
+
 /* TITLE */
 h1 {
   font-size: 170px;
@@ -105,8 +116,8 @@ h1 {
   line-height: 150px;
   margin: 50px 0 50px 50px;
 }
-/* MAIN  //////////////////////////////////// */
 
+/* MAIN  //////////////////////////////////// */
 main {
   display: flex;
   flex-direction: column;
@@ -147,7 +158,8 @@ main .btn {
 footer {
   display: none;
 }
-/* Golden Cookie //////////////// */ 
+
+/* Golden Cookie //////////////// */
 .golden-cookie {
   width: 50px;
   height: 50px;
