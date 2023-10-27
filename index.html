@@ -14,42 +14,47 @@
     <div class="gdpr-modal" id="gdprModal">
       <p>
         Bienvenue sur le Poodle Clicker !!! Pour accéder accéder aux jeux
-          veuillez accepter les Cookies :-)
+        veuillez accepter les Cookies :-)
       </p>
-      <button class="gdpr-accept" id="acceptButton">Acceptez</button>
+      <button class="btn-accept" id="acceptButton">Acceptez</button>
     </div>
 
     <!-- INSTRUCTION ////////////  -->
-    <div id="bloc-instruction" class="bloc-instruction">
-      <h2>Poddle Clicker</h2>
-      <h3>Objectif : Obtenir le plus de crookette avant le Game Over</h3>
-      <div class="item-instruction">
-        <img src="img/caniche.png" alt="caniche-info" />
-        <p>Caresser le Poddle pour obtenir le plus de crookettes</p>
+    <div id="bloc-instruction">
+      <div class="bloc-instruction">
+        <h2>Poddle Clicker</h2>
+        <h3>Objectif : Obtenir le plus de crookette avant le Game Over</h3>
+        <div class="bloc-item">
+          <div class="item-instruction">
+            <img src="img/caniche.png" alt="caniche-info" />
+            <p>Caresser le Poddle pour obtenir le plus de crookettes</p>
+          </div>
+          <div class="item-instruction">
+            <img src="/img/cookie.png" alt="os-info" />
+            <p>Attentions ! Manger des croukettes vous ôtes des points</p>
+          </div>
+          <div class="item-instruction">
+            <img src="/img/calculator.png" alt="os-info" />
+            <p>Utiliser le multiplicator pour décupler vos gains</p>
+          </div>
+          <div class="item-instruction">
+            <img src="/img/cursor.png" alt="os-info" />
+            <p>Utiliser l'Auto Click pour recevoir des os automatiquement</p>
+          </div>
+          <div class="item-instruction">
+            <img src="/img/sablier.png" alt="os-info" />
+            <p>
+              Utiliser le Boost de 30 secondes pour augmenter encore plus vos
+              gains
+            </p>
+          </div>
+          <div class="item-instruction">
+            <img src="/img/dog-biscuit.png" alt="os-info" />
+            <p>Attraper l'os en OR pour muliplier vos gains par 2 !</p>
+          </div>
+        </div>
+        <button id="close-instruction" class="btn-accept">LET'S GO</button>
       </div>
-      <div class="item-instruction">
-        <img src="/img/cookie.png" alt="os-info" />
-        <p>Attentions ! Manger des croukettes vous ôtes des points</p>
-      </div>
-      <div class="item-instruction">
-        <img src="/img/calculator.png" alt="os-info" />
-        <p>Utiliser le multiplicator pour décupler vos gains</p>
-      </div>
-      <div class="item-instruction">
-        <img src="/img/cursor.png" alt="os-info" />
-        <p>Utiliser l'Auto Click pour recevoir des os automatiquement</p>
-      </div>
-      <div class="item-instruction">
-        <img src="/img/sablier.png" alt="os-info" />
-        <p>
-          Utiliser le Boost de 30 secondes pour augmenter encore plus vos gains
-        </p>
-      </div>
-      <div class="item-instruction">
-        <img src="/img/dog-biscuit.png" alt="os-info" />
-        <p>Attraper l'os en OR pour muliplier vos gains par 2 !</p>
-      </div>
-      <button id="close-instruction" class="close-instruction">X</button>
     </div>
     <!-- GAME OVER ////////////  -->
 
@@ -63,15 +68,15 @@
         <p>LvL Multiplicator : <span id="multiplicator-final">0</span></p>
         <p>LvL Boost : <span id="boost-final">time</span></p>
       </div>
-      <button id="close-GameOver">Terminer Partie</button>
+      <button id="close-GameOver" class="btn-accept">GAME OVER</button>
     </div>
-        
+
     <!-- WRAPPER ////////////  -->
     <div class="wrapper">
       <!-- HEADER ////////////  -->
       <header>
         <h1>
-          <img class="logo" src="img/logo.png" alt="logo poodle-clicker">
+          <img class="logo" src="img/logo.png" alt="logo poodle-clicker" />
         </h1>
         <!-- BTN  COOKIE-CLICKER -->
         <button id="btn-cookieClicker">
@@ -84,7 +89,6 @@
         <!-- SCREEN SCORE -->
         <section id="screen-score" class="btn">
           <p>
-           
             <span id="score">0</span>
             <span id="timer-booster"></span>
           </p>
