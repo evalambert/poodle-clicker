@@ -14,10 +14,36 @@
   src: url("font/6x7oct.ttf");
 }
 
+/* BODY //////////////////////////////////// */
+body {
+  background-color: #b5b1e7;
+  font-family: "6x7oct-bold";
+}
+
+/* CURSOR */
+.custom-cursor {
+  display: none;
+  position: absolute;
+  pointer-events: none;
+  width: 70px;
+  z-index: 10000;
+}
+
+/* BUTTON */
+button {
+  transition:
+  /*background-color 0.3s,*/ transform 0.2s;
+}
+button:active {
+  transform: scale(0.95);
+}
+
 /* GDPR COOKIE  /////////////////////////////// */
 .gdpr-modal {
   display: none;
   position: fixed;
+  width: 70%;
+  height: 15%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -27,14 +53,18 @@
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.095);
   z-index: 998;
   text-align: center;
-  border-radius: 15px;
+  border-radius: 20px;
 }
 .gdpr-accept {
   background-color: #b5b1e7;
-  border-radius: 10px;
-  padding: 0 auto;
+  border-radius: 15px;
+  padding: 15px;
+  margin: 20px;
+  box-shadow:
+    3px 3px 3px 0px rgba(255, 255, 255, 0.63) inset,
+    -3px -3px 3px 0px rgba(0, 0, 0, 0.75) inset;
 }
-/* CSS for the screen-lock overlay */
+/* OVERLAY */
 .overlay {
   display: none;
   position: fixed;
@@ -42,26 +72,11 @@
   left: 0;
   width: 100%;
   height: 100%;
-  backdrop-filter: blur(25px);
   z-index: 995;
   cursor: none;
 }
 
-/* WRAPPER //////////////////////////////////// */
-/* //////////////////////////////////////////// */
-.wrapper {
-  cursor: none;
-  background-color: #b5b1e7;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  font-family: "6x7oct-bold";
-}
-
-/* INSTRUCTIONS  //////////////////////////////////// */
+/* INSTRUCTIONS */
 #bloc-instruction {
   cursor: none;
   position: fixed;
@@ -70,12 +85,12 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #d5d2fc;
+  background-color: white;
   padding: 20px;
   box-shadow: 0px 0px 10px #d5d2fcb3;
   z-index: 997;
   text-align: center;
-  border-radius: 30px;
+  border-radius: 20px;
   display: none;
 }
 .bloc-instruction {
@@ -85,14 +100,6 @@
   align-content: space-between;
   gap: 10px;
 }
-
-
-.bloc-instruction {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .bloc-instruction img {
   height: 40px;
   width: auto;
@@ -114,8 +121,7 @@
   font-size: 16px;
 }
 
-
-/* GAME -OVER  //////////////////////////////////// */
+/* GAME -OVER */
 #bloc-game-over {
   position: fixed;
   width: 70%;
@@ -134,21 +140,34 @@
   cursor: none;
 }
 
-/* COOKIES  //////////////////////////////////// */
+.close-instruction {
+  cursor: none;
+}
+
+/* WRAPPER //////////////////////////////////// */
+.wrapper {
+  cursor: none;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-family: "6x7oct-bold";
+}
+
+/* LITTLE-COOKIE */
 .little-cookie {
   cursor: none;
   width: 75px;
   height: 75px;
   position: absolute;
 }
-
-/* CURSOR  //////////////////////////////////// */
-.custom-cursor {
-  display: none;
+/* GOLDEN-COOKIE */
+.golden-cookie {
+  width: 50px;
+  height: 50px;
   position: absolute;
-  pointer-events: none;
-  width: 70px;
-  z-index: 10000;
 }
 
 /* HEADER  //////////////////////////////////// */
@@ -156,36 +175,28 @@ header {
   width: 70%;
   display: flex;
   flex-direction: column;
-  border: 1px solid blue;
 }
-
-/* BTN COOKIE-CLICKER */
+/* H1 */
+img.logo {
+  width: 80%;
+  margin: 30px 30px 0 30px;
+}
+/* POODLE — COOKIE-CLICKER */
 #btn-cookieClicker {
   cursor: none;
   max-width: 530px;
   height: auto;
   margin: 0 auto;
 }
-
-/* TITLE */
-h1 {
-  font-size: 170px;
-  rotate: -10deg;
-  font-family: "beloved";
-  line-height: 150px;
-  margin: 50px 0 50px 50px;
-}
-
-/* MAIN  //////////////////////////////////// */
+/* MAIN //////////////////////////////////// */
 main {
   width: 30%;
   display: flex;
   flex-direction: column;
   gap: 20px;
   padding: 30px;
-  border: 1px solid red;
 }
-
+/* BTN */
 main .btn {
   padding: 20px 30px;
   background-color: #d5d2fc;
@@ -199,14 +210,18 @@ main .btn {
   flex-direction: row;
   justify-content: space-between;
   background: #d5d2fc;
-  border-radius: 30px;
+  border-radius: 20px;
   box-shadow:
     3px 3px 3px 0px rgba(255, 255, 255, 0.63) inset,
     -3px -3px 3px 0px rgba(0, 0, 0, 0.75) inset;
 }
-
-#screen-score {
-  box-shadow: 5px 5px 5px 0px rgba(56, 56, 56, 0.528) inset;
+.btn-action .icon {
+  height: 90px;
+  align-self: center;
+}
+.btn-action p {
+  white-space: nowrap;
+  padding-left: 20px;
 }
 .btn-other {
   width: 50%;
@@ -220,24 +235,23 @@ main .btn {
   justify-content: space-between;
   gap: 20px;
 }
-
-.icon {
-  height: 90px;
-  align-self: center;
+/* SCREEN */
+#screen-score {
+  box-shadow: 5px 5px 5px 0px rgba(56, 56, 56, 0.528) inset;
 }
-
-/* FOOTER  //////////////////////////////////// */
+/* FOOTER //////////////////////////////////// */
 footer {
   display: none;
 }
 
-/* Golden Cookie //////////////// */
-.golden-cookie {
-  width: 50px;
-  height: 50px;
+/* //////////////////////////////////////////////////// */
+/* MEDIAQUERIES //////////////////////////////////////////
+/* //////////////////////////////////////////////////// */
 
-  position: absolute;
+@media (max-width: 1200px) {
 }
-.close-instruction{ 
-   cursor: none;
+@media (max-width: 992px) {
+  #btn-cookieClicker {
+    max-width: 450px;
+  }
 }
