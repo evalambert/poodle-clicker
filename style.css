@@ -28,7 +28,6 @@ body {
   width: 70px;
   z-index: 10000;
 }
-
 /* BUTTON */
 button {
   transition:
@@ -37,13 +36,24 @@ button {
 button:active {
   transform: scale(0.95);
 }
+.btn-accept {
+  background-color: #b5b1e7;
+  border-radius: 15px;
+  padding: 15px;
+  margin: 20px 20px 0 20px;
+  box-shadow:
+    3px 3px 3px 0px rgba(255, 255, 255, 0.63) inset,
+    -3px -3px 3px 0px rgba(0, 0, 0, 0.75) inset;
+  cursor: none;
+}
+
 
 /* GDPR COOKIE  /////////////////////////////// */
 .gdpr-modal {
   display: none;
   position: fixed;
   width: 70%;
-  height: 15%;
+  height: auto;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -55,15 +65,7 @@ button:active {
   text-align: center;
   border-radius: 20px;
 }
-.gdpr-accept {
-  background-color: #b5b1e7;
-  border-radius: 15px;
-  padding: 15px;
-  margin: 20px;
-  box-shadow:
-    3px 3px 3px 0px rgba(255, 255, 255, 0.63) inset,
-    -3px -3px 3px 0px rgba(0, 0, 0, 0.75) inset;
-}
+
 /* OVERLAY */
 .overlay {
   display: none;
@@ -81,12 +83,10 @@ button:active {
   cursor: none;
   position: fixed;
   width: 70%;
-  height: 70%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
-  padding: 20px;
   box-shadow: 0px 0px 10px #d5d2fcb3;
   z-index: 997;
   text-align: center;
@@ -97,35 +97,37 @@ button:active {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-content: space-between;
   gap: 10px;
-}
-.bloc-instruction img {
-  height: 40px;
-  width: auto;
-  margin-right: 20px;
+  padding: 20px;
 }
 .bloc-instruction h2 {
   font-family: "beloved";
   font-size: 100px;
   line-height: 70px;
-}
-.bloc-instruction p {
-  font-family: "6x7oct-bold";
-  text-transform: uppercase;
-  font-size: 15px;
+  padding: 20px;
 }
 .bloc-instruction h3 {
   font-family: "6x7oct-bold";
   text-transform: uppercase;
   font-size: 16px;
 }
+.bloc-instruction img {
+  height: auto;
+  width: 40px;
+  margin-right: 20px;
+}
+.bloc-instruction p {
+  font-family: "6x7oct-bold";
+  text-transform: uppercase;
+  font-size: 15px;
+}
+
 
 /* GAME -OVER */
 #bloc-game-over {
   position: fixed;
   width: 70%;
-  height: 70%;
+  min-height: auto;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -137,10 +139,6 @@ button:active {
   text-align: center;
   border-radius: 15px;
   display: none;
-  cursor: none;
-}
-
-.close-instruction {
   cursor: none;
 }
 
@@ -162,14 +160,20 @@ button:active {
   width: 75px;
   height: 75px;
   position: absolute;
+  transition: transform 0.1s;
+}
+.little-cookie:active {
+  transform: scale(0.9);
 }
 /* GOLDEN-COOKIE */
 .golden-cookie {
-  width: 50px;
-  height: 50px;
+  width: 130px;
+  height: 130px;
   position: absolute;
 }
-
+.golden-cookie:active {
+  transform: scale(0.9);
+}
 /* HEADER  //////////////////////////////////// */
 header {
   width: 70%;
@@ -187,6 +191,8 @@ img.logo {
   max-width: 530px;
   height: auto;
   margin: 0 auto;
+  position: relative;
+  top: -40px;
 }
 /* MAIN //////////////////////////////////// */
 main {
@@ -204,7 +210,24 @@ main .btn {
   height: 130px;
   cursor: none;
 }
+
+/* SCREEN */
+#screen-score {
+  min-width: 240px;
+  width: 100%;
+  box-shadow: 5px 5px 5px 0px rgba(56, 56, 56, 0.528) inset;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+#screen-score p {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 20px;
+}
 .btn-action {
+  min-width: 240px;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -220,7 +243,7 @@ main .btn {
   align-self: center;
 }
 .btn-action p {
-  white-space: nowrap;
+  /* white-space: nowrap; */
   padding-left: 20px;
 }
 .btn-other {
@@ -233,12 +256,10 @@ main .btn {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   gap: 20px;
 }
-/* SCREEN */
-#screen-score {
-  box-shadow: 5px 5px 5px 0px rgba(56, 56, 56, 0.528) inset;
-}
+
 /* FOOTER //////////////////////////////////// */
 footer {
   display: none;

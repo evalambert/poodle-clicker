@@ -123,7 +123,7 @@
                 seconds--;
 
                 // Met à jour l'affichage du timer
-                document.getElementById("timer-booster").innerHTML = " | Timer : " + seconds;
+                document.getElementById("timer-booster").innerHTML = "00:" + seconds;
 
                 if (seconds <= 0) {
                     clearInterval(countdown); // Arrête le compte à rebours à la fin
