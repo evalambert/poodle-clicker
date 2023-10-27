@@ -117,18 +117,18 @@
             UpdateBooster();
             // Active le booster
             let seconds = 30; // Définis le temps du booster à 30 secondes
-
+            
             // Lance le compte à rebours
             countdown = setInterval(function() {
                 seconds--;
 
                 // Met à jour l'affichage du timer
+                
                 document.getElementById("timer-booster").innerHTML = " | Timer : " + seconds;
-
                 if (seconds <= 0) {
                     clearInterval(countdown); // Arrête le compte à rebours à la fin
                     boostActive = false; // Désactive le booster
-                    document.getElementById("timer-booster").innerHTML = " "; // Met à jour l'affichage du timer à 0
+                    document.getElementById("timer-booster").innerHTML = " "; // Met à jour l'affichage du timer
                 }
             }, 1000);
         } 
