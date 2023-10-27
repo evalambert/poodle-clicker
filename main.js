@@ -111,13 +111,17 @@
 
     // BOOSTER //////////////////////////////////////////////////////////////
     document.getElementById('btn-booster').addEventListener('click', function() {
-        if (!boostActive && score >= boostPrice) { // Vérifie si le booster n'est pas déjà actif et si le score est suffisant
+
+        if(boostActive){
+            alert("Attendre la fin du compteur");
+        }
+        else if(!boostActive && score >= boostPrice) { // Vérifie si le booster n'est pas déjà actif et si le score est suffisant
             boostActive = true;
             updateScoreNegative(boostPrice); // Soustrait le coût du booster du score
             UpdateBooster();
             // Active le booster
             let seconds = 30; // Définis le temps du booster à 30 secondes
-            
+            document.getElementById('timer-booster').style.display = "block";
             // Lance le compte à rebours
             countdown = setInterval(function() {
                 seconds--;
@@ -131,7 +135,7 @@
                     document.getElementById("timer-booster").innerHTML = " "; // Met à jour l'affichage du timer
                 }
             }, 1000);
-        } 
+        }
         else{
             alert("pas assez de credits")
         }
