@@ -1,16 +1,24 @@
 (() => {
 
-    let score = 0; 
-    let priceMultiplicator = 10; // Prix du multiplicator
-    let multiplicator = 0; // Niveau du multiplicator
+    let score = parseInt(localStorage.getItem("score"), 10) ||0; 
+    let priceMultiplicator = parseInt(localStorage.getItem("priceMultiplicator"), 10) || 10; // Prix du multiplicator
+    let multiplicator = parseInt(localStorage.getItem("multiplicator"), 10) ||0; // Niveau du multiplicator
     let boostActive = false; // Aggiunto flag per gestire il booster
     let countdown; // Variabile per il countdown del booster
-    let lvlBooster = 0; // Niveau du booster
-    let boostPrice = 50; // Prix du boost
+    let lvlBooster = parseInt(localStorage.getItem("lvlBooster"), 10) ||0; // Niveau du booster
+    let boostPrice = parseInt(localStorage.getItem("boostPrice"), 10) ||50; // Prix du boost
+    let priceAutoClicker = parseInt(localStorage.getItem("priceAutoClicker"), 10) ||50; // Prix du Auto Click;
+    let autoClicker = parseInt(localStorage.getItem("autoClicker"), 10) ||0; // Niveau du Auto Click
+    let time = 0;
 
-    document.getElementById("score").innerHTML = score;
+    document.getElementById("score").innerHTML = "COOKIE: " + score;
     document.getElementById("cost-multiplicator").innerHTML = priceMultiplicator;
+    document.getElementById("lvl-multiplicator").innerHTML = multiplicator;
     document.getElementById("cost-booster").innerHTML = boostPrice;
+    document.getElementById("lvl-booster").innerHTML = lvlBooster;
+    document.getElementById("cost-autoClicker").innerHTML = priceAutoClicker;
+    document.getElementById("lvl-autoClicker").innerHTML = autoClicker;
+    
 
     // GDPR - Cookies //////////////////////////////////////////////////////////////
     const gdprModal = document.getElementById("gdprModal");
@@ -31,21 +39,20 @@
     
 
     // Fermer le PopUp Cookie GDPR
+    let interval;
     acceptButton.addEventListener("click", () => {
         gdprModal.style.display = "none";
-        
-        // Afficher le bloc d'instructions
-        instructionModal.style.display = "block";
-    });
-    // Fermer le PopUp Instructions
-    let interval;
-    let time = 0;
-    instructionClose.addEventListener("click", () => {
-        instructionModal.style.display = "none";
-        overlay.style.display = "none";
         if (!interval) {
             interval = setInterval(updateTimer, 1000); // Mettre à jour le minuteur toutes les 1000 ms (1 seconde)
         }
+        // Afficher le bloc d'instructions
+        instructionModal.style.display = "block";
+    });
+
+    // Fermer le PopUp Instructions
+    instructionClose.addEventListener("click", () => {
+        instructionModal.style.display = "none";
+        overlay.style.display = "none";
     });
     // COOKIE-CLICKER //////////////////////////////////////////////////////////////
     document.getElementById('btn-cookieClicker').addEventListener('click', function () {
@@ -53,20 +60,19 @@
         if (multiplicator > 0) {
             if(boostActive){
                 // Si le multiplicator est déjà activé précédement et que le boost est activé
-                score += 1 * (multiplicator * 2)*5;
-
+                updateScorePositive(1 * (multiplicator * 2)*5);
             }
             else{
-                score += 1 * (multiplicator * 2);
+                updateScorePositive(1 * (multiplicator * 2));
             }
             
         }
         else if(boostActive){
             // Boutton Cookie si le boost est activé sans le multiplicator
-            score += 5;
+            updateScorePositive(5);
         }
         else {
-            score += 1;
+            updateScorePositive(1);
         }
 
         // Mettez à jour le contenu des éléments
@@ -76,44 +82,29 @@
     // MULTIPLICATOR //////////////////////////////////////////////////////////////
     document.getElementById("btn-multiplicator").addEventListener("click", () => {
         if (score >= priceMultiplicator) {
-            score -= priceMultiplicator;
-            priceMultiplicator *= 2;
-            multiplicator +=1;
-
-            // Mettez à jour le contenu des éléments
-            document.getElementById("score").innerHTML = score;
-            document.getElementById("cost-multiplicator").innerHTML = priceMultiplicator;
-            document.getElementById("lvl-multiplicator").innerHTML = multiplicator;
+            updateScoreNegative(priceMultiplicator);
+            updateMultiplicator();
         } else {
             alert("Vous n'avez pas assez de crédits");
         }
     });
 
     // AUTOCLICK //////////////////////////////////////////////////////////////
-    let priceAutoClicker = 50;
-    let autoClicker = 0; // 1 clic par seconde
-
-    document.getElementById('cost-autoClicker').innerHTML = priceAutoClicker;
 
     function click() {
         score += autoClicker;
-        document.getElementById('score').textContent = score;
+        localStorage.setItem("score", score);
+        document.getElementById('score').textContent = "COOKIE: " + score;
     }
 
     document.getElementById('btn-autoClicker').addEventListener('click', () => {
         if (score >= priceAutoClicker) {
-            score -= priceAutoClicker;
-            priceAutoClicker *= 3; // Augmente le coût 
-            autoClicker++;
-
+            updateScoreNegative(priceAutoClicker);
+            updateAutoClicker();
             // Démarre le clic automatique
             setInterval(click, 1000); // 1000 ms = 1 sec.
-
-            // Mettez à jour le contenu des éléments
-            document.getElementById('score').innerHTML = score;
-            document.getElementById('cost-autoClicker').innerHTML = priceAutoClicker;
-            document.getElementById("lvl-autoClicker").innerHTML = autoClicker;
-        } else {
+        }
+        else {
             alert("Vous n'avez pas assez de crédits");
         }
     });
@@ -122,12 +113,8 @@
     document.getElementById('btn-booster').addEventListener('click', function() {
         if (!boostActive && score >= boostPrice) { // Vérifie si le booster n'est pas déjà actif et si le score est suffisant
             boostActive = true;
-            score -= boostPrice; // Soustrait le coût du booster du score
-            boostPrice *= 2;
-            lvlBooster++;
-            document.getElementById("cost-booster").innerHTML = boostPrice;
-            document.getElementById("lvl-booster").innerHTML = lvlBooster;
-            document.getElementById("score").innerHTML = score;
+            updateScoreNegative(boostPrice); // Soustrait le coût du booster du score
+            UpdateBooster();
             // Active le booster
             let seconds = 30; // Définis le temps du booster à 30 secondes
 
@@ -136,12 +123,12 @@
                 seconds--;
 
                 // Met à jour l'affichage du timer
-                document.getElementById("timer-booster").innerHTML = seconds;
+                document.getElementById("timer-booster").innerHTML = " | Timer : " + seconds;
 
                 if (seconds <= 0) {
                     clearInterval(countdown); // Arrête le compte à rebours à la fin
                     boostActive = false; // Désactive le booster
-                    document.getElementById("timer-booster").innerHTML = 0; // Met à jour l'affichage du timer à 0
+                    document.getElementById("timer-booster").innerHTML = " "; // Met à jour l'affichage du timer à 0
                 }
             }, 1000);
         } 
@@ -186,7 +173,7 @@
           div.remove();
           deleteAllLittleCookie();
           score *= 2;
-          document.getElementById('score').innerHTML = score;
+          document.getElementById('score').innerHTML = "COOKIE: " + score;
         });
   
         const img = document.createElement('img');
@@ -315,9 +302,14 @@
         boostPrice = 50;
         priceMultiplicator = 10;
         priceAutoClicker = 50;
+        time = 0;
         deleteAllLittleCookie();
+        clearAll();
+        if (!interval) {
+            interval = setInterval(updateTimer, 1000); // Mettre à jour le minuteur toutes les 1000 ms (1 seconde)
+        }
         document.getElementById("timer-booster").style.display = "none";
-        document.getElementById("score").innerHTML = score;
+        document.getElementById("score").innerHTML = "COOKIE: " + score;
         document.getElementById("cost-autoClicker").innerHTML = priceAutoClicker;
         document.getElementById("lvl-autoClicker").innerHTML = autoClicker;
         document.getElementById("cost-multiplicator").innerHTML = priceMultiplicator;
@@ -325,4 +317,49 @@
         document.getElementById("cost-booster").innerHTML = boostPrice;
         document.getElementById("lvl-booster").innerHTML = lvlBooster;
     });
+
+    // Score reste au reload de la page
+    function updateScorePositive(add) {
+        score += add;
+        localStorage.setItem("score", score);
+        document.getElementById("score").innerHTML = score;
+    }
+    function updateScoreNegative(add) {
+        score -= add;
+        localStorage.setItem("score", score);
+        document.getElementById("score").innerHTML = "COOKIE: " + score;
+    }
+    function updateMultiplicator(){
+        multiplicator += 1;
+        priceMultiplicator *= 2;
+        localStorage.setItem("multiplicator", multiplicator);
+        localStorage.setItem("priceMultiplicator", priceMultiplicator);
+        document.getElementById("cost-multiplicator").innerHTML = priceMultiplicator;
+        document.getElementById("lvl-multiplicator").innerHTML = multiplicator;
+    }
+    function UpdateBooster(){
+        lvlBooster += 1;
+        boostPrice *=2;
+        localStorage.setItem("lvlBooster", lvlBooster);
+        localStorage.setItem("boostPrice", boostPrice);
+        document.getElementById("cost-booster").innerHTML = boostPrice;
+        document.getElementById("lvl-booster").innerHTML = lvlBooster;
+    }
+    function updateAutoClicker(){
+        autoClicker += 1;
+        priceAutoClicker *=2;
+        localStorage.setItem("autoClicker", autoClicker);
+        localStorage.setItem("priceAutoClicker", priceAutoClicker);
+        document.getElementById("cost-autoClicker").innerHTML = priceAutoClicker;
+        document.getElementById("lvl-autoClicker").innerHTML = autoClicker;
+    }
+    function clearAll() {
+        localStorage.removeItem("score");
+        localStorage.removeItem("multiplicator");
+        localStorage.removeItem("priceMultiplicator");
+        localStorage.removeItem("lvlBooster");
+        localStorage.removeItem("boostPrice");
+        localStorage.removeItem("autoClicker");
+        localStorage.removeItem("priceAutoClicker");
+    }
 })();
