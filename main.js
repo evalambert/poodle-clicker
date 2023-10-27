@@ -303,6 +303,7 @@
         priceMultiplicator = 10;
         priceAutoClicker = 50;
         time = 0;
+        boostActive = false;
         deleteAllLittleCookie();
         clearAll();
         if (!interval) {
@@ -322,7 +323,7 @@
     function updateScorePositive(add) {
         score += add;
         localStorage.setItem("score", score);
-        document.getElementById("score").innerHTML = score;
+        document.getElementById("score").innerHTML = "COOKIE: " + score;
     }
     function updateScoreNegative(add) {
         score -= add;
