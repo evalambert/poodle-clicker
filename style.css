@@ -31,7 +31,7 @@ body {
 button {
   transition:
 /*     background-color 0.3s,
- */    transform 0.2s;
+ */ transform 0.2s;
 }
 button:active {
   transform: scale(0.95);
@@ -154,7 +154,7 @@ h3 {
 /* GAME -OVER //////////////////////////////////////*/
 #bloc-game-over {
   position: fixed;
-  width: 70%;
+  width: 50%;
   min-height: auto;
   top: 50%;
   left: 50%;
@@ -166,8 +166,33 @@ h3 {
   z-index: 999;
   text-align: center;
   border-radius: 15px;
+  display: flex;
   display: none;
   cursor: none;
+}
+
+.img-game-over {
+  height: auto;
+  width: 40px;
+}
+#bloc-game-over p,
+#bloc-game-over h3 {
+  margin-bottom: 10px;
+}
+/* MQ - INSTRUCTIONS */
+@media (max-width: 768px) {
+  /* INSTRUCTION */
+  #bloc-game-over {
+    width: 80%;
+    height: auto;
+  }
+  #bloc-game-over h2 {
+    font-size: 60px;
+    line-height: 45px;
+    padding: 10px;
+    white-space: nowrap;
+    margin-bottom: 10px;
+  }
 }
 
 /* WRAPPER //////////////////////////////////// */
@@ -177,9 +202,8 @@ h3 {
   height: 100vh;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   font-family: "6x7oct-bold";
-  overflow: hidden;
+  overflow-x: hidden;
 }
 /* LITTLE-COOKIE */
 .little-cookie {
@@ -201,7 +225,6 @@ h3 {
 .golden-cookie:active {
   transform: scale(0.9);
 }
-
 /* MQ - WRAPPER ///////////////////////*/
 @media (max-width: 768px) {
   /* WRAPPER //////////// */
@@ -235,6 +258,7 @@ h3 {
 /* HEADER  //////////////////////////////////// */
 header {
   width: 70%;
+  height: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -243,11 +267,10 @@ img.logo {
   width: 80%;
   margin: 30px 30px 0 30px;
 }
-/* POODLE — COOKIE-CLICKER */
+/* PODDLE — COOKIE-CLICKER */
 #btn-cookieClicker {
   cursor: none;
   max-width: 530px;
-  width: 60%;
   margin: 0 auto;
   position: relative;
   top: -40px;
@@ -257,7 +280,7 @@ img.logo {
 @media (max-width: 768px) {
   /* PODDLE COOKIE-CLICKER */
   #btn-cookieClicker {
-    width: 70%;
+    width: 80%;
     top: 0px;
   }
   header {
@@ -270,6 +293,13 @@ img.logo {
   }
 }
 
+@media (max-width: 375px) {
+  /* PODDLE COOKIE-CLICKER */
+  #btn-cookieClicker {
+    width: 60%;
+    top: -10px;
+  }
+}
 /* MAIN //////////////////////////////////// */
 main {
   width: 30%;
@@ -315,6 +345,7 @@ main .btn {
 .item-screen-other {
   display: none;
 }
+
 /* BTN ACTION */
 .bloc-btn-action {
   display: flex;
@@ -369,10 +400,9 @@ main .btn {
   main .btn {
     padding: 15px;
     height: auto;
-    max-height: 130px;
+    /* max-height: 130px; */
     font-size: 15px;
-    /*max-width: 130px;
-    */
+    max-width: none;
   }
   /* WRAPPER - BTN */
   .wrapper-btn {
@@ -391,11 +421,12 @@ main .btn {
   }
   .item-screen-other-left p {
     text-align: left;
+    font-size: 12px;
   }
   .item-screen-other-right p {
     text-align: right;
+    font-size: 12px;
   }
-
   /* BTN ACTION */
   .bloc-btn-action {
     flex-direction: row;
