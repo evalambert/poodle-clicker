@@ -84,7 +84,6 @@ button:active {
   width: 100%;
   height: 100%;
   z-index: 995;
-  cursor: none;
 }
 
 /* INSTRUCTIONS ////////////////////////////////////// */
@@ -392,6 +391,9 @@ main .btn {
 
 /* MQ -  MAIN */
 @media (max-width: 768px) {
+  .custom-cursor {
+    display: none;
+  }
   main {
     width: 90%;
     gap: 10px;
