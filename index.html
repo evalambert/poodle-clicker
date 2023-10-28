@@ -71,11 +71,12 @@
       <div class="gameOver-content">
         <h2>Game Over</h2>
         <h3>Résumé de la partie</h3>
-        <p>Score : <span id="score-final">0</span></p>
+        <img class="img-game-over" src="/img/cookie-icon.png" anlt="os-info" />
+        <p>Score : <span id="score-final">0</span> crookettes</p>
         <p>Temps de jeu : <span id="temps-jeu">time</span></p>
-        <p>LvL Auto Clicker : <span id="autoClick-final">0</span></p>
-        <p>LvL Multiplicator : <span id="multiplicator-final">0</span></p>
-        <p>LvL Booster : <span id="boost-final">time</span></p>
+        <p>Level Auto-Clicker : <span id="autoClick-final">0</span></p>
+        <p>Level Multiplicator : <span id="multiplicator-final">0</span></p>
+        <p>Level Booster : <span id="boost-final">time</span></p>
       </div>
       <button id="close-GameOver" class="btn-accept">GAME OVER</button>
     </div>
@@ -98,23 +99,18 @@
         <!-- WRAPPER BTN -->
         <div class="wrapper-btn">
           <section id="screen-score" class="btn container-screen">
-            <!--   <p>
-              <span id="score">0</span>
-              <span id="timer-booster"></span>
-            </p> -->
             <div class="item-score-timer">
               <p><span id="score">0</span></p>
               <p><span id="timer-booster"></span></p>
             </div>
-
             <div class="item-screen-other">
               <div class="item-screen-other-left">
-                <p><span id="name-option">NAME</span></p>
-                <p><span id="timer-mobile">time</span></p>
+                <p><span id="name-option">BTN</span></p>
+                <p><span id="timer-mobile">00:00</span></p>
               </div>
               <div class="item-screen-other-right">
-                <p>Cost: <span id="cost-mobile">cost</span></p>
-                <p>Level: <span id="lvl-mobile">lvl</span></p>
+                <p>Cost: <span id="cost-mobile">0</span></p>
+                <p>Level: <span id="lvl-mobile">0</span></p>
               </div>
             </div>
           </section>
@@ -130,7 +126,6 @@
                 <div class="info">
                   <p>Cost: <span id="cost-autoClicker">50</span></p>
                   <p>Level: <span id="lvl-autoClicker">0</span></p>
-                  <p>x<span id="x-autoClicker">0</span></p>
                 </div>
               </button>
             </section>
@@ -144,7 +139,6 @@
                 <div class="info">
                   <p>Cost: <span id="cost-multiplicator">100</span></p>
                   <p>Level: <span id="lvl-multiplicator">0</span></p>
-                  <p>x<span id="x-multiplicator">0</span></p>
                 </div>
               </button>
             </section>
@@ -158,7 +152,6 @@
                 <div class="info">
                   <p>Cost: <span id="cost-booster">500</span></p>
                   <p>Level: <span id="lvl-booster">0</span></p>
-                  <p>X<span id="x-booster">0</span></p>
                 </div>
               </button>
             </section>
