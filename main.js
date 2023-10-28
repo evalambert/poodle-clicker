@@ -250,9 +250,7 @@
     });
 
   /////CURSOR CHANGEMENT////////
-  document
-    .getElementById("acceptButton")
-    .addEventListener("click", function () {
+  document.getElementById("acceptButton").addEventListener("click", function () {
       const cursor = document.querySelector(".custom-cursor");
       cursor.style.display = "block"; // CHANGE LE CURSOR IN DISPLAY BLOCK
 
@@ -260,6 +258,9 @@
         cursor.style.left = `${e.clientX - 25}px`;
         cursor.style.top = `${e.clientY}px`;
       });
+      if (/Mobi|Android/i.test(navigator.userAgent)) {
+        cursor.style.display = "none"; 
+      }
     });
 
   //HOVER TEXT////////////////////////

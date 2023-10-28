@@ -51,10 +51,7 @@ button:active {
 }
 
 /* MQ - BODY */
-@media (max-width: 768px) {
-  .custom-cursor {
-    display: none;
-  }
+@media (max-width: 768px) { 
 }
 
 /* GDPR-COOKIE  /////////////////////////////// */
