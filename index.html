@@ -13,8 +13,8 @@
     <div class="overlay" id="overlay"></div>
     <div class="gdpr-modal" id="gdprModal">
       <p>
-        Bienvenue sur le Poodle Clicker !!! Pour accéder accéder aux jeux
-        veuillez accepter les Cookies :-)
+        Bienvenue sur le Poodle Clicker ! Pour commencer la partie merci
+        d'accepter les Crookies :-)
       </p>
       <button class="btn-accept" id="acceptButton">Acceptez</button>
     </div>
@@ -23,50 +23,59 @@
     <div id="bloc-instruction">
       <div class="bloc-instruction">
         <h2>Poddle Clicker</h2>
-        <h3>Objectif : Obtenir le plus de crookette avant le Game Over</h3>
+        <h3>Le but du jeu est d'obtenir le plus de crookette possible !!!</h3>
         <div class="bloc-item">
           <div class="item-instruction">
-            <img src="img/caniche.png" alt="caniche-info" />
-            <p>Caresser le Poddle pour obtenir le plus de crookettes</p>
+            <img src="img/caniche-icon.png" alt="caniche-info" />
+            <p>Caresser le caniche pour obtenir le plus de crookette</p>
           </div>
           <div class="item-instruction">
-            <img src="/img/cookie.png" alt="os-info" />
-            <p>Attentions ! Manger des croukettes vous ôtes des points</p>
+            <img src="/img/cookie-icon.png" anlt="os-info" />
+            <p>Attention ! Manger des crookettes t'ôtes des points !</p>
           </div>
           <div class="item-instruction">
-            <img src="/img/calculator.png" alt="os-info" />
-            <p>Utiliser le multiplicator pour décupler vos gains</p>
+            <img src="/img/dog-biscuit-icon.png" alt="os-info" />
+            <p>
+              Attrape les golden crookettes, elles te permettra de multiplier
+              ton gain par deux
+            </p>
           </div>
           <div class="item-instruction">
             <img src="/img/cursor.png" alt="os-info" />
-            <p>Utiliser l'Auto Click pour recevoir des os automatiquement</p>
+            <p>
+              Utilise l'Auto-clicker pour gagner une crookette toute les
+              secondes
+            </p>
+          </div>
+          <div class="item-instruction">
+            <img src="/img/calculator.png" alt="os-info" />
+            <p>
+              Le Multiplicator te permettra de gagner plusieurs crookettes à la
+              fois
+            </p>
           </div>
           <div class="item-instruction">
             <img src="/img/sablier.png" alt="os-info" />
             <p>
-              Utiliser le Boost de 30 secondes pour augmenter encore plus vos
-              gains
+              Le Booster !!! 30 secondes montre en main pour décupler à l'infini
+              tes gains :-)
             </p>
-          </div>
-          <div class="item-instruction">
-            <img src="/img/dog-biscuit.png" alt="os-info" />
-            <p>Attraper l'os en OR pour muliplier vos gains par 2 !</p>
           </div>
         </div>
         <button id="close-instruction" class="btn-accept">LET'S GO</button>
       </div>
     </div>
-    <!-- GAME OVER ////////////  -->
 
+    <!-- GAME OVER ////////////  -->
     <div id="bloc-game-over">
       <div class="gameOver-content">
         <h2>Game Over</h2>
         <h3>Résumé de la partie</h3>
         <p>Score : <span id="score-final">0</span></p>
         <p>Temps de jeu : <span id="temps-jeu">time</span></p>
-        <p>LvL Auto Click : <span id="autoClick-final">0</span></p>
+        <p>LvL Auto Clicker : <span id="autoClick-final">0</span></p>
         <p>LvL Multiplicator : <span id="multiplicator-final">0</span></p>
-        <p>LvL Boost : <span id="boost-final">time</span></p>
+        <p>LvL Booster : <span id="boost-final">time</span></p>
       </div>
       <button id="close-GameOver" class="btn-accept">GAME OVER</button>
     </div>
@@ -86,71 +95,88 @@
 
       <!-- MAIN ////////////  -->
       <main>
-        <!-- SCREEN SCORE -->
-        <section id="screen-score" class="btn">
-          <p>
-            <span id="score">0</span>
-            <span id="timer-booster"></span>
-          </p>
-        </section>
+        <!-- WRAPPER BTN -->
+        <div class="wrapper-btn">
+          <section id="screen-score" class="btn container-screen">
+            <!--   <p>
+              <span id="score">0</span>
+              <span id="timer-booster"></span>
+            </p> -->
+            <div class="item-score-timer">
+              <p><span id="score">0</span></p>
+              <!-- <p>00:<span id="timer-booster"></span></p> -->
+            </div>
 
-        <!-- BTN AUTO-CLICKER -->
-        <section id="autoClicker">
-          <button id="btn-autoClicker" class="btn btn-action">
-            <div class="icon">
-              <img src="img/cursor.png" alt="icon auto-clicker" />
+            <div class="item-screen-other">
+              <div class="item-screen-other-left">
+                <p><span id="">MULTIPLICATOR</span></p>
+                <p>x<span id="">1</span></p>
+              </div>
+              <div class="item-screen-other-right">
+                <p>Cost: <span id="">50</span></p>
+                <p>Level: <span id="">0</span></p>
+              </div>
             </div>
-            <div class="info">
-              <p>Cost: <span id="cost-autoClicker">50</span></p>
-              <p>Level: <span id="lvl-autoClicker">0</span></p>
-            </div>
-          </button>
-        </section>
+          </section>
 
-        <!-- BTN MULTIPLICATOR -->
-        <section id="multiplicator">
-          <button id="btn-multiplicator" class="btn btn-action">
-            <div class="icon">
-              <img src="img/calculator.png" alt="icon multiplicator" />
-            </div>
-            <div class="info">
-              <p>Cost: <span id="cost-multiplicator">100</span></p>
-              <p>Level: <span id="lvl-multiplicator">0</span></p>
-            </div>
-          </button>
-        </section>
+          <!-- BLOC BTN-ACTION -->
+          <div class="bloc-btn-action">
+            <!-- BTN AUTO-CLICKER -->
+            <section id="autoClicker">
+              <button id="btn-autoClicker" class="btn btn-action">
+                <div class="icon">
+                  <img src="img/cursor.png" alt="icon auto-clicker" />
+                </div>
+                <div class="info">
+                  <p>Cost: <span id="cost-autoClicker">50</span></p>
+                  <p>Level: <span id="lvl-autoClicker">0</span></p>
+                  <p>x<span id="x-autoClicker">0</span></p>
+                </div>
+              </button>
+            </section>
 
-        <!-- BTN BOOSTER -->
-        <section id="booster">
-          <button id="btn-booster" class="btn btn-action">
-            <div class="icon">
-              <img src="img/sablier.png" alt="icon booster" />
-            </div>
-            <div class="info">
-              <p>Cost: <span id="cost-booster">500</span></p>
-              <p>Level: <span id="lvl-booster">0</span></p>
-            </div>
-          </button>
-        </section>
+            <!-- BTN MULTIPLICATOR -->
+            <section id="multiplicator">
+              <button id="btn-multiplicator" class="btn btn-action">
+                <div class="icon">
+                  <img src="img/calculator.png" alt="icon multiplicator" />
+                </div>
+                <div class="info">
+                  <p>Cost: <span id="cost-multiplicator">100</span></p>
+                  <p>Level: <span id="lvl-multiplicator">0</span></p>
+                  <p>x<span id="x-multiplicator">0</span></p>
+                </div>
+              </button>
+            </section>
 
-        <!-- BTN INFO + BTN RESET -->
+            <!-- BTN BOOSTER -->
+            <section id="booster">
+              <button id="btn-booster" class="btn btn-action">
+                <div class="icon">
+                  <img src="img/sablier.png" alt="icon booster" />
+                </div>
+                <div class="info">
+                  <p>Cost: <span id="cost-booster">500</span></p>
+                  <p>Level: <span id="lvl-booster">0</span></p>
+                  <p>X<span id="x-booster">0</span></p>
+                </div>
+              </button>
+            </section>
+          </div>
+        </div>
+
+        <!-- BLOC BTN-INFO + BTN-RESET -->
         <section id="info-and-reset">
           <button id="btn-info" class="btn btn-other">
-            <!--  <div class="icon">
-              <img src="img/sablier.png" alt="icon info" />
-            </div> -->
             <p>INFO</p>
           </button>
           <button id="btn-reset" class="btn btn-other">
-            <!--  <div class="icon">
-              <img src="img/sablier.png" alt="icon reset" />
-            </div> -->
             <p>RESET</p>
           </button>
         </section>
       </main>
 
-      <!-- FOOTER ////////////  -->
+      <!-- FOOTER //////////// -->
       <footer>
         <p>2023, Ema, Thomas & Eva</p>
       </footer>
