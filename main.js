@@ -10,6 +10,7 @@
     let priceAutoClicker = parseInt(localStorage.getItem("priceAutoClicker"), 10) ||50; // Prix du Auto Click;
     let autoClicker = parseInt(localStorage.getItem("autoClicker"), 10) ||0; // Niveau du Auto Click
     let time = 0;
+    let seconds = 30;
 
     document.getElementById("score").innerHTML = "COOKIE: " + score;
     document.getElementById("cost-multiplicator").innerHTML = priceMultiplicator;
@@ -18,6 +19,7 @@
     document.getElementById("lvl-booster").innerHTML = lvlBooster;
     document.getElementById("cost-autoClicker").innerHTML = priceAutoClicker;
     document.getElementById("lvl-autoClicker").innerHTML = autoClicker;
+
     
 
     // GDPR - Cookies //////////////////////////////////////////////////////////////
@@ -81,11 +83,25 @@
 
     // MULTIPLICATOR //////////////////////////////////////////////////////////////
     document.getElementById("btn-multiplicator").addEventListener("click", () => {
-        if (score >= priceMultiplicator) {
-            updateScoreNegative(priceMultiplicator);
-            updateMultiplicator();
-        } else {
-            alert("Vous n'avez pas assez de crédits");
+        if (window.innerWidth >= 768) {
+            // Code à exécuter lorsque la largeur de l'écran est supérieure ou égale à 768 pixels
+            if (score >= priceMultiplicator) {
+                updateScoreNegative(priceMultiplicator);
+                updateMultiplicator();
+            }
+            else {
+                alert("Vous n'avez pas assez de crédits");
+            }
+        }
+        else {
+            // Code à exécuter lorsque la largeur de l'écran est inférieure à 768 pixels
+            if (score >= priceMultiplicator) {
+                updateScoreNegative(priceMultiplicator);
+                updateMultiplicatorMobile();
+            }
+            else {
+                alert("Vous n'avez pas assez de crédits");
+            }
         }
     });
 
@@ -98,42 +114,84 @@
     }
 
     document.getElementById('btn-autoClicker').addEventListener('click', () => {
-        if (score >= priceAutoClicker) {
-            updateScoreNegative(priceAutoClicker);
-            updateAutoClicker();
-            // Démarre le clic automatique
-            setInterval(click, 1000); // 1000 ms = 1 sec.
+        if (window.innerWidth >= 768) {
+            if (score >= priceAutoClicker) {
+                updateScoreNegative(priceAutoClicker);
+                updateAutoClicker();
+                // Démarre le clic automatique
+                setInterval(click, 1000); // 1000 ms = 1 sec.
+            }
+            else {
+                alert("Vous n'avez pas assez de crédits");
+            }
         }
-        else {
-            alert("Vous n'avez pas assez de crédits");
+        else{
+            if (score >= priceAutoClicker) {
+                updateScoreNegative(priceAutoClicker);
+                updateAutoClickerMobile();
+                // Démarre le clic automatique
+                setInterval(click, 1000); // 1000 ms = 1 sec.
+            }
+            else {
+                alert("Vous n'avez pas assez de crédits");
+            }
         }
+
     });
 
     // BOOSTER //////////////////////////////////////////////////////////////
     document.getElementById('btn-booster').addEventListener('click', function() {
-        if (!boostActive && score >= boostPrice) { // Vérifie si le booster n'est pas déjà actif et si le score est suffisant
-            boostActive = true;
-            updateScoreNegative(boostPrice); // Soustrait le coût du booster du score
-            UpdateBooster();
-            // Active le booster
-            let seconds = 30; // Définis le temps du booster à 30 secondes
-
-            // Lance le compte à rebours
-            countdown = setInterval(function() {
-                seconds--;
-
-                // Met à jour l'affichage du timer
-                document.getElementById("timer-booster").innerHTML = "00:" + seconds;
-
-                if (seconds <= 0) {
-                    clearInterval(countdown); // Arrête le compte à rebours à la fin
-                    boostActive = false; // Désactive le booster
-                    document.getElementById("timer-booster").innerHTML = " "; // Met à jour l'affichage du timer à 0
-                }
-            }, 1000);
-        } 
+        if (window.innerWidth >= 768) {
+            if(boostActive){
+                alert("Attendre la fin du compteur");
+            }
+            else if(!boostActive && score >= boostPrice) { // Vérifie si le booster n'est pas déjà actif et si le score est suffisant
+                boostActive = true;
+                updateScoreNegative(boostPrice); // Soustrait le coût du booster du score
+                UpdateBooster();
+                // Active le booster
+                document.getElementById('timer-booster').style.display = "block";
+                // Lance le compte à rebours
+                countdown = setInterval(function() {
+                    seconds--;
+    
+                    // Met à jour l'affichage du timer
+                    
+                    document.getElementById("timer-booster").innerHTML = "00:"+seconds;
+                    if (seconds <= 0) {
+                        clearInterval(countdown); // Arrête le compte à rebours à la fin
+                        boostActive = false; // Désactive le booster
+                        document.getElementById("timer-booster").innerHTML = " "; // Met à jour l'affichage du timer
+                    }
+                }, 1000);
+            }
+            else{
+                alert("pas assez de credits")
+            }
+        }
         else{
-            alert("pas assez de credits")
+            if(boostActive){
+                alert("Attendre la fin du compteur");
+            }
+            else if(!boostActive && score >= boostPrice) { // Vérifie si le booster n'est pas déjà actif et si le score est suffisant
+                boostActive = true;
+                updateScoreNegative(boostPrice); // Soustrait le coût du booster du score
+                updateBoosterMobile();
+                // Active le booster
+                let seconds = 30; // Définis le temps du booster à 30 secondes
+                // Lance le compte à rebours
+                countdown = setInterval(function() {
+                    seconds--;
+                    document.getElementById("timer-mobile").innerHTML = "00:"+seconds;
+                    if (seconds <= 0) {
+                        clearInterval(countdown); // Arrête le compte à rebours à la fin
+                        boostActive = false; // Désactive le booster
+                    }
+                }, 1000);
+            }
+            else{
+                alert("pas assez de credits")
+            }
         }
     });
 
@@ -303,6 +361,7 @@
         priceMultiplicator = 10;
         priceAutoClicker = 50;
         time = 0;
+        boostActive = false;
         deleteAllLittleCookie();
         clearAll();
         if (!interval) {
@@ -316,13 +375,17 @@
         document.getElementById("lvl-multiplicator").innerHTML = multiplicator;
         document.getElementById("cost-booster").innerHTML = boostPrice;
         document.getElementById("lvl-booster").innerHTML = lvlBooster;
+        document.getElementById("name-option").innerHTML = "NEW GAME";
+        document.getElementById("timer-mobile").innerHTML = "00:00";
+        document.getElementById("cost-mobile").innerHTML = "...";
+        document.getElementById("lvl-mobile").innerHTML = "...";
     });
 
     // Score reste au reload de la page
     function updateScorePositive(add) {
         score += add;
         localStorage.setItem("score", score);
-        document.getElementById("score").innerHTML = score;
+        document.getElementById("score").innerHTML = "COOKIE: " + score;
     }
     function updateScoreNegative(add) {
         score -= add;
@@ -337,6 +400,21 @@
         document.getElementById("cost-multiplicator").innerHTML = priceMultiplicator;
         document.getElementById("lvl-multiplicator").innerHTML = multiplicator;
     }
+    function updateMultiplicatorMobile(){
+        multiplicator += 1;
+        priceMultiplicator *= 2;
+        localStorage.setItem("multiplicator", multiplicator);
+        localStorage.setItem("priceMultiplicator", priceMultiplicator);
+        document.getElementById("cost-mobile").innerHTML = priceMultiplicator;
+        document.getElementById("lvl-mobile").innerHTML = multiplicator;
+        document.getElementById("name-option").innerHTML = "MULTIPLICATOR";
+        if(boostActive){
+            document.getElementById("timer-mobile").innerHTML = "00:"+seconds;
+        }
+        else{
+            document.getElementById("timer-mobile").innerHTML = "00:00";
+        }
+    }
     function UpdateBooster(){
         lvlBooster += 1;
         boostPrice *=2;
@@ -345,6 +423,17 @@
         document.getElementById("cost-booster").innerHTML = boostPrice;
         document.getElementById("lvl-booster").innerHTML = lvlBooster;
     }
+    function updateBoosterMobile(){
+        lvlBooster += 1;
+        boostPrice *=2;
+        localStorage.setItem("lvlBooster", lvlBooster);
+        localStorage.setItem("boostPrice", boostPrice);
+        document.getElementById("cost-mobile").innerHTML = boostPrice;
+        document.getElementById("lvl-mobile").innerHTML = lvlBooster;
+        document.getElementById("name-option").innerHTML = "BOOSTER";
+        document.getElementById("timer-mobile").innerHTML = "00:"+seconds;
+        
+    }
     function updateAutoClicker(){
         autoClicker += 1;
         priceAutoClicker *=2;
@@ -352,6 +441,22 @@
         localStorage.setItem("priceAutoClicker", priceAutoClicker);
         document.getElementById("cost-autoClicker").innerHTML = priceAutoClicker;
         document.getElementById("lvl-autoClicker").innerHTML = autoClicker;
+    }
+    function updateAutoClickerMobile(){
+        autoClicker += 1;
+        priceAutoClicker *=2;
+        localStorage.setItem("autoClicker", autoClicker);
+        localStorage.setItem("priceAutoClicker", priceAutoClicker);
+        document.getElementById("cost-mobile").innerHTML = priceAutoClicker;
+        document.getElementById("lvl-mobile").innerHTML = autoClicker;
+        document.getElementById("name-option").innerHTML = "Auto Click";
+        if(boostActive){
+            document.getElementById("timer-mobile").innerHTML = "00:"+seconds;
+        }
+        else{
+            document.getElementById("timer-mobile").innerHTML = "00:00";
+        }
+        
     }
     function clearAll() {
         localStorage.removeItem("score");
