@@ -23,9 +23,7 @@
     <div id="bloc-instruction">
       <div class="bloc-instruction">
         <h2>Poddle Clicker</h2>
-        <h3>
-          Le but du jeu est d'obtenir le plus de crookette possible !!!
-        </h3>
+        <h3>Le but du jeu est d'obtenir le plus de crookette possible !!!</h3>
         <div class="bloc-item">
           <div class="item-instruction">
             <img src="img/caniche-icon.png" alt="caniche-info" />
@@ -52,13 +50,15 @@
           <div class="item-instruction">
             <img src="/img/calculator.png" alt="os-info" />
             <p>
-              Le Multiplicator te permettra de gagner plusieurs crookettes à la fois
+              Le Multiplicator te permettra de gagner plusieurs crookettes à la
+              fois
             </p>
           </div>
           <div class="item-instruction">
             <img src="/img/sablier.png" alt="os-info" />
             <p>
-              Le Booster !!! 30 secondes montre en main pour décupler à l'infini tes gains :-)
+              Le Booster !!! 30 secondes montre en main pour décupler à l'infini
+              tes gains :-)
             </p>
           </div>
         </div>
@@ -97,11 +97,26 @@
       <main>
         <!-- WRAPPER BTN -->
         <div class="wrapper-btn">
-          <section id="screen-score" class="btn">
-            <p>
+          <section id="screen-score" class="btn container-screen">
+            <!--   <p>
               <span id="score">0</span>
               <span id="timer-booster"></span>
-            </p>
+            </p> -->
+            <div class="item-score-timer">
+              <p><span id="score">0</span></p>
+              <!-- <p>00:<span id="timer-booster"></span></p> -->
+            </div>
+
+            <div class="item-screen-other">
+              <div class="item-screen-other-left">
+                <p><span id="">MULTIPLICATOR</span></p>
+                <p>x<span id="">1</span></p>
+              </div>
+              <div class="item-screen-other-right">
+                <p>Cost: <span id="">50</span></p>
+                <p>Level: <span id="">0</span></p>
+              </div>
+            </div>
           </section>
 
           <!-- BLOC BTN-ACTION -->
@@ -115,6 +130,7 @@
                 <div class="info">
                   <p>Cost: <span id="cost-autoClicker">50</span></p>
                   <p>Level: <span id="lvl-autoClicker">0</span></p>
+                  <p>x<span id="x-autoClicker">0</span></p>
                 </div>
               </button>
             </section>
@@ -128,6 +144,7 @@
                 <div class="info">
                   <p>Cost: <span id="cost-multiplicator">100</span></p>
                   <p>Level: <span id="lvl-multiplicator">0</span></p>
+                  <p>x<span id="x-multiplicator">0</span></p>
                 </div>
               </button>
             </section>
@@ -141,6 +158,7 @@
                 <div class="info">
                   <p>Cost: <span id="cost-booster">500</span></p>
                   <p>Level: <span id="lvl-booster">0</span></p>
+                  <p>X<span id="x-booster">0</span></p>
                 </div>
               </button>
             </section>
@@ -150,15 +168,9 @@
         <!-- BLOC BTN-INFO + BTN-RESET -->
         <section id="info-and-reset">
           <button id="btn-info" class="btn btn-other">
-            <!--  <div class="icon">
-              <img src="img/sablier.png" alt="icon info" />
-            </div> -->
             <p>INFO</p>
           </button>
           <button id="btn-reset" class="btn btn-other">
-            <!--  <div class="icon">
-              <img src="img/sablier.png" alt="icon reset" />
-            </div> -->
             <p>RESET</p>
           </button>
         </section>

@@ -30,11 +30,15 @@ body {
 /* BUTTON */
 button {
   transition:
-  /*background-color 0.3s,*/ transform 0.2s;
+/*     background-color 0.3s,
+ */    transform 0.2s;
 }
 button:active {
   transform: scale(0.95);
 }
+/* button:hover {
+  background-color: #d5d2fc;
+} */
 .btn-accept {
   background-color: #b5b1e7;
   border-radius: 15px;
@@ -73,7 +77,6 @@ button:active {
 
 /* OVERLAY */
 .overlay {
-  /* display: none; */
   position: fixed;
   background-color: #b5b1e7c1;
   top: 0;
@@ -102,10 +105,6 @@ button:active {
   overflow: auto;
 }
 .bloc-instruction {
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 20px; */
   padding: 20px;
 }
 h2 {
@@ -295,19 +294,26 @@ main .btn {
 }
 
 /* SCREEN */
-#screen-score {
+.container-screen {
   min-width: 270px;
   width: 100%;
   box-shadow: 5px 5px 5px 0px rgba(56, 56, 56, 0.528) inset;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: space-between;
+}
+.container-screen p {
+  font-size: 20px;
+}
+.item-score-timer {
+  display: flex;
   flex-direction: row;
   justify-content: center;
-}
-#screen-score p {
-  display: flex;
   align-items: center;
-  justify-content: space-between;
-  font-size: 20px;
+}
+.item-screen-other {
+  display: none;
 }
 /* BTN ACTION */
 .bloc-btn-action {
@@ -373,6 +379,23 @@ main .btn {
     width: auto;
     gap: 10px;
   }
+  /* SCREEN SCORE */
+  .container-screen p {
+    font-size: 15px;
+  }
+  .item-screen-other {
+    display: block;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .item-screen-other-left p {
+    text-align: left;
+  }
+  .item-screen-other-right p {
+    text-align: right;
+  }
+
   /* BTN ACTION */
   .bloc-btn-action {
     flex-direction: row;
