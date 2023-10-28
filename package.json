@@ -20,5 +20,8 @@
     "gh-pages": "^6.0.0",
     "prettier": "3.0.3",
     "vite": "^4.4.5"
+  },
+  "dependencies": {
+    "fs-extra": "^11.1.1"
   }
 }

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -6,71 +6,179 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     
-    <title>Vite App</title>
-    <script type="module" crossorigin src="/cookie-clicker/assets/index-72d3a14b.js"></script>
-    <link rel="stylesheet" href="/cookie-clicker/assets/index-2c8cc0b1.css">
+    <title>Poddle Clicker</title>
+    <script type="module" crossorigin src="/cookie-clicker/assets/index-963cd276.js"></script>
+    <link rel="stylesheet" href="/cookie-clicker/assets/index-bbe2421b.css">
   </head>
   <body>
+    <!-- GDPR COOKIE ////////////  -->
+    <div class="overlay" id="overlay"></div>
+    <div class="gdpr-modal" id="gdprModal">
+      <p>
+        Bienvenue sur le Poodle Clicker ! Pour commencer la partie merci
+        d'accepter les Crookies :-)
+      </p>
+      <button class="btn-accept" id="acceptButton">Acceptez</button>
+    </div>
+
+    <!-- INSTRUCTION ////////////  -->
+    <div id="bloc-instruction">
+      <div class="bloc-instruction">
+        <h2>Poddle Clicker</h2>
+        <h3>Le but du jeu est d'obtenir le plus de crookette possible !!!</h3>
+        <div class="bloc-item">
+          <div class="item-instruction">
+            <img src="/cookie-clicker/assets/caniche-icon-486b781b.png" alt="caniche-info" />
+            <p>Caresser le caniche pour obtenir le plus de crookette</p>
+          </div>
+          <div class="item-instruction">
+            <img src="/cookie-clicker/assets/cookie-icon-0a4cafa8.png" anlt="os-info" />
+            <p>Attention ! Manger des crookettes t'ôtes des points !</p>
+          </div>
+          <div class="item-instruction">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAMAAACahl6sAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAylpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDkuMC1jMDAxIDc5LmMwMjA0YjJkZWYsIDIwMjMvMDIvMDItMTI6MTQ6MjQgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCAyNC41IChNYWNpbnRvc2gpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkQ5OTI5RDYwNkM2ODExRUVCMkIxQjkzRjlEOEY3QUZCIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkQ5OTI5RDYxNkM2ODExRUVCMkIxQjkzRjlEOEY3QUZCIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RDk5MjlENUU2QzY4MTFFRUIyQjFCOTNGOUQ4RjdBRkIiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RDk5MjlENUY2QzY4MTFFRUIyQjFCOTNGOUQ4RjdBRkIiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5LmI0VAAAAqFBMVEX/vQD/uAD/kgD/jwD/oAD/sQD/vgD/swD/uQD/nwD/vwD/wAD/ugD/ngD/uwD/sAD/tQD/vAD/pQD/jQD/kQD/owD/rAD/lAD/twD/rQD/lwD/rwD/kAD/oQD/jgD/qwD/rgD/wQD/nAD/tAD/mwD/mAD/qQD/ogD/lgD/tgD/qAD/nQD/pwD/jAD/wwD/lQD/qgD/iwD/igD/wgD/mgD/kwD/xQAAAAAHwHwhAAAAOHRSTlP/////////////////////////////////////////////////////////////////////////ADtcEcoAAAnQSURBVHja7J0Jc6JMEIbx4JRDoxi8UXQ9ks2x2f38///sY7rZpWGAqAEjybxVW7WlcZdHmJ7pt3sm0vGLSBIgAkSACBABIkAEiAARIF8U5NDppaTUE+RHR0pJgAgQAZIc7LUHcbxuKBMu3taI9vB6fUA8QwmFd8FuEEns9af6gHSV+HFKgPTYK0sBIkA+BqIYTJKXBnmrA8jLj1AHiFeKuhgOhwu5Z4cyCYgiH8IfGt42yFsn1BKeKWOxsixr9QKzSY+ASMYy/KH/RjcNQgaHMbTa7bY1NDgQUGchQASIABEgAkSAfA+QB13XHxb1B/FnruvOfATBDLGWIO9IgAgQAfI1QRQiBHm5URCTeW/7PA7TvfunbQARGT6QkHkTIE/xl50Fosd6UA3uJinFzt01QZaFI8LU2/9kRSCclgJEgGQZQTS0guiAMR8spmKQt08GGTJPTqaXfQhXi247INfbU0GuHoP0TFAEytTz2T93+CyQ4X/Mk6NfsrKbt1qt1xEt9IB92rkjIGgKa/i2xv7umaz0ayw+CSSjwrYZNJvNuc+/UQyCsg8CRICAEjVPCFfL8TQE6WeAuCx4rd8BefwkEIeMc3vC5Kx34/H43uGjrM8qDS97hQPBCAY4pn91EO1pGYrG3QYLV625PgulZ0wXBtZ+JA4EbxhWUey38F/tPF0RpMutERtNkFU470l5IBKCwNTS6wgQARI94OyP9heEph23D7JPV6G17p/7UH+2d8yaC4yc65WgCy3q7cB4hc6dia9cEcRIp4OdyZzdij+wvNVNJfXGYJfzxf9NHbX0/boSCPe4dCYtBnKPIBr3xjgfJP0JASJAvg8ICwhLpz8YDKY7g9g+CRCLjXVL453IikHQ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" alt="os-info" />
+            <p>
+              Attrape les golden crookettes, elles te permettra de multiplier
+              ton gain par deux
+            </p>
+          </div>
+          <div class="item-instruction">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAMAAACahl6sAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAylpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDkuMC1jMDAxIDc5LmMwMjA0YjJkZWYsIDIwMjMvMDIvMDItMTI6MTQ6MjQgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkQ5OTI5RDY1NkM2ODExRUVCMkIxQjkzRjlEOEY3QUZCIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkQ5OTI5RDY0NkM2ODExRUVCMkIxQjkzRjlEOEY3QUZCIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCAyNC41IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MUM4RDA3NkY2QjU3MTFFRUIyQjFCOTNGOUQ4RjdBRkIiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MUM4RDA3NzA2QjU3MTFFRUIyQjFCOTNGOUQ4RjdBRkIiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6QAT3gAAADAFBMVEX///8AAACdnZ0TExPt7e1MTExNTU2zs7MBAQFvb280NDTW1tZ9fX04ODgeHh739/e+vr5TU1MPDw/q6ura2tovLy/JycnU1NQ/Pz+srKwEBARtbW1YWFjw8PBiYmI3NzcICAinp6eGhoYVFRXh4eH09PS8vLzAwMAaGhqSkpK/v7/s7OylpaUrKyu7u7u0tLTY2Nipqanm5uafn58SEhL5+fn8/Pybm5tmZmZ4eHgpKSkcHBzBwcEHBwdkZGT29vYXFxeVlZUoKCjl5eWHh4cFBQX+/v4YGBgwMDA1NTWEhIRxcXFpaWkjIyOCgoKPj4+YmJjKysrNzc08PDwdHR2ZmZmXl5czMzO5ubl1dXWxsbEhISFWVlZRUVHX19dSUlLDw8Pk5OQCAgJPT09DQ0MDAwPS0tLGxsampqb6+vrf399nZ2cbGxvCwsIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACUoDz6AAAAb3RSTlP//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////wD+VnbVAAADpElEQVR42uzd/U/aQADG8WaLE6cO1BLKpGiCuKFWp2zMlzkGk2KmjfFliTMbQUXIyOL//5sbLTR6F7XC3bXXPU/8abgL33yWLbTClOvBd0PvWvgUhCAEIQhBCEJ8Cuk965ml1sLdnX4RXsQi5HJOIWdJGTLUNomOqKwhJEhW0hA1LCEQgQhEIAIRiEAEIhCBCEQgAhGIQAQiEIEIRCACEYhABCKDiwi7T8pbRK4QiEAEIhCBSMBEKo10OpW6/ZWSU2RyXjGVO1/R6RsuWpxFJpfJh6L7AQ5RnxBSXA+JSKBDIAKRQIlErshdyCliaQ1icTlFSlHysdMB/qz5KHJAhhSG/Q7pT+SgSIacSSoSvBCIQAQigkUmZ47taYbkIlpz7bwzPWl4tQmmSGOq+0tv4kJD2Iv0QmKSi/gVApH/R2QhLCIr1qAhXl5WCxA5TI1r9l7OPlJ0T8hJxEOJAJGs2rSnJq3+Qo4vPFzqECDirmn0FzL+pJA2/5CjsogQESJWBCIQCZNIpnfr7ZR8Y3Ux3fttO1GRIlWD3JYHkaLmfG95t07dsRrrnnOSj4oUGVPVd7enJnIUES1itp3vrqlZ6qGp7kmjuilSJE+eWKAv0NIi/Y2rSK5AnPh71YMI+5CBReiQZFhEkhCBCB+R1fCIbDt7zVxkuHv0VWORv4iij9bstUsZxiJKNuEcPTpX4C/y799mZ8rKW8Yi7tGmqQgQcXdWZS3ywHiI0CEq/xCIQCSoIh/vPzspg4jWCymZ9/5VKYWIO8u59Kodl6izF1sx+wPnlpvF4IrQF7OnFV83sIgbsudvCDuRPYhABCIPhmyERWRE0Z0V5RRxS4z9z+nO1nNyilBFF5qkImRI5WdIRCoTYRGZgAhEIAIRiEAEIhCBCEQeCdlOyS7SW3njh72RvC6niLtZZ5GhNblF3FfxL9YkF3H//5SwiFxCBCIQCU5IIi63yNz3sW+d7exzeEePyJBYvPuTTxXJQ5Y3Ob7HSqiIgRCEyBvyKywhE1NmOELiuSV7z2K6nCFUUUMNScgQQoIW0oYIRCACEYhABCIQgQhCHnupeM4tpC7yg8Ii46uH9c4+HX1g9Pz15pE9Nb8pIsS9qVg92eoso7F6FV/f/fPKXtXzk2AR4v6Qs/GVkcj8c6Efb0iHsLpAtJBBCEIQghCEIAQhCEEIQgIeEmd1D67lb0jEatUSLFZbeu+vyLZVZrOtK39D2A8hCEEIQhAS8JC/AgwAxI1aGceqD/QAAAAASUVORK5CYII=" alt="os-info" />
+            <p>
+              Utilise l'Auto-clicker pour gagner une crookette toute les
+              secondes
+            </p>
+          </div>
+          <div class="item-instruction">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAMAAACahl6sAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAylpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDkuMC1jMDAxIDc5LmMwMjA0YjJkZWYsIDIwMjMvMDIvMDItMTI6MTQ6MjQgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjk2RjNGNkVCNkM2OTExRUVCMkIxQjkzRjlEOEY3QUZCIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjk2RjNGNkVBNkM2OTExRUVCMkIxQjkzRjlEOEY3QUZCIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCAyNC41IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MUM4RDA3NzM2QjU3MTFFRUIyQjFCOTNGOUQ4RjdBRkIiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MUM4RDA3NzQ2QjU3MTFFRUIyQjFCOTNGOUQ4RjdBRkIiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6zHJsTAAADAFBMVEX///8BAQEAAADFxcVGRkampqbS0tIuLi6xsbFkZGQzMzPe3t4VFRX6+vrT09MxMTHf3990dHQMDAzl5eWjo6Pv7++VlZWcnJwDAwM3NzdERESLi4vU1NRNTU0rKyv8/PwPDw/W1tbBwcECAgI2NjY/Pz+UlJTAwMBaWlpVVVUgICA8PDxDQ0MTExPb29t8fHx5eXnd3d3V1dVwcHCCgoJbW1tMTEz9/f16enr7+/uqqqoqKiq1tbUhISEODg7CwsLIyMjn5+c+Pj7c3Nzz8/P+/v6tra1UVFSurq4pKSnj4+NfX1/Q0NA0NDSysrKTk5Px8fH19fVAQEBpaWkUFBQiIiLLy8uwsLA7OzstLS0oKCjw8PDGxsZ7e3v39/enp6erq6uBgYE1NTUvLy/m5ubq6uqsrKx3d3eQkJCZmZlFRUWamppzc3Ovr6/y8vLExMQfHx/i4uJCQkK2traPj4+ioqKYmJj5+fmFhYWWlpYbGxv09PQwMDBsbGx4eHiDg4Nvb2++vr6dnZ3r6+u5ubkEBAQsLCw5OTmgoKBHR0fo6OjKyso9PT2KiooGBgbMzMx2dnZ+fn5tbW0HBwdgYGC8vLyHh4d9fX2Xl5cnJyfR0dEyMjLDw8O/v7/t7e3Z2dlXV1cmJiZZWVns7Oz/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB8Seo0AAAApXRSTlP//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////wAge84EAAADvklEQVR42uzd508UQRgG8CMogrCHimIXDxBpooDeeXAeXaQKiCgiCoqCgIK9995778r/ufJldl6SyQCyO7MLz/PxCcnOj5DMm5nbwzc2pZgx6mNmj00jPkAAAQQQQABRANGRP/ZDmtuT1Kf93V17IOR3M+jTkflkBftnACF/rfM0QfgK8gABBBBAAAHEVZBzw4sdzfAPIeSZ7ZC9To+KBUJIcqF/PHZCFjo80ZuJQkhnY9l4ZgFkQVzseAABBBBAAAEEEEAAAQQQQAABxH5Ip9OHD4WKIH2LHE5YEUTTAR0ggAACCCCChNJ4aqSlyyGV0fUs0Yi0dDkkmYwY+6SlyyFkkjTjpSUggAACCCCAzGJIHdnEd0pLl0MK1/CckpYY4wEBBBBAAJkNkNYUnr/8kcdIfUha+vpIm8bKMCkrlECGyNhxhkOOkvqktDTeiq5CikgZVQJZbk52jTXJ0GgsMQWXUwFSbgIEEEAAAQQQQFRB7mSsYMl4zCFNpG6WlkaUtBxCyiQlkIvLeK5ySDWpDWnp6yJtyLqlI2ULxnhAAAEEEEAAUQUJZKWyZJFbqBJSJ0rL0AnStshKZyG7ybnNEQ7ZQeoSaWmIXss1Jn9X1xvTr3gkBgQQQAABBBDXQj6RLTiPQw6IPnYiLCds4lWy0lnI2fxVLPn9HLKH1AelZThI2gpZiekXEEAAAQQQ90IKlvK854+MkLpeWoYOk7ZaVqo7fMjE4QOmX0AAAQQQQDwOuUC24EoOKSX1LmlpZAg+ZSosnYXEZ65kyXzDIQ2kLpOW4TbSpshKTL+AAAIIIIB4DdIYzxOw2nTSWkfsNRHStspKZyEvuzezdD+ynviLTBi3rJZ+n3mP2w4fsoSnKAnkidt9Hp5+AQEEEEAAAWQmkAayTb6y2gfCw4f7osMH9ZBUsoyH1hNfl65jKR2w2hzS3rYOH5pIW68P8j17G0v2B9vGXA0QZwIIIIAAAshcgcSt5unhKzlP6gLpmkMD5Ee79EGm8/5If20OS22H/BTF3Vdvv8mSj+MOERBAAAEEEOcgL5R/8uEy/d/vHPJZtPeJIaJXRcJ1o7kso6eVQO4F17IEP3JIManLpXNLWi350SfeuEMc6t3K0vsTl6GAAAIIIHMOQvazoBZIhKwg1///EJIrCTrSNnhzC8vzp7ZATD25kWJ9X3vjiD2QGB0xi4tiJ8bTkPSNPF6GfKua0grdD0kfAwQQQBRC9OR6wG5I5Qaer8mqcu3SF7shNAG/snSMOAkpj1UaQADRDPknwAAA/UqmxU/1LQAAAABJRU5ErkJggg==" alt="os-info" />
+            <p>
+              Le Multiplicator te permettra de gagner plusieurs crookettes à la
+              fois
+            </p>
+          </div>
+          <div class="item-instruction">
+            <img src="/cookie-clicker/assets/sablier-ebdfbf6c.png" alt="os-info" />
+            <p>
+              Le Booster !!! 30 secondes montre en main pour décupler à l'infini
+              tes gains :-)
+            </p>
+          </div>
+        </div>
+        <button id="close-instruction" class="btn-accept">LET'S GO</button>
+      </div>
+    </div>
+
+    <!-- GAME OVER ////////////  -->
+    <div id="bloc-game-over">
+      <div class="gameOver-content">
+        <h2>Game Over</h2>
+        <h3>Résumé de la partie</h3>
+        <img class="img-game-over" src="/cookie-clicker/assets/cookie-icon-0a4cafa8.png" anlt="os-info" />
+        <p>Score : <span id="score-final">0</span> crookettes</p>
+        <p>Temps de jeu : <span id="temps-jeu">time</span></p>
+        <p>Level Auto-Clicker : <span id="autoClick-final">0</span></p>
+        <p>Level Multiplicator : <span id="multiplicator-final">0</span></p>
+        <p>Level Booster : <span id="boost-final">time</span></p>
+      </div>
+      <button id="close-GameOver" class="btn-accept">GAME OVER</button>
+    </div>
+
+    <!-- WRAPPER ////////////  -->
     <div class="wrapper">
       <!-- HEADER ////////////  -->
       <header>
-        <!-- BTN AUTO-CLICKER -->
-        <section id="autoClicker">
-          <button id="btn-autoClicker"></button>
-          <p>
-            AUTO-CLICKER — Cost:
-            <span id="cost-autoClicker">50</span>
-            Cookies
-          </p>
-          <p>Level 
-            <span id="lvl-autoClicker">0</span>
-          </p>
-        </section>
-
-        <!-- BTN MULTIPLICATOR -->
-        <section id="multiplicator">
-          <button id="btn-multiplicator"></button>
-          <p>
-            MULTIPLICATOR — Cost:
-            <span id="cost-multiplicator">100</span>
-            Cookies
-          </p>
-          <p>Level 
-            <span id="lvl-multiplicator">0</span>
-          </p>
-        </section>
-
-        <!-- BTN BOOSTER -->
-        <section id="booster">
-          <button id="btn-booster"></button>
-          <p>
-            BOOSTER — Cost:
-            <span id="cost-booster">500</span>
-            Cookies
-            <span id="timer-booster"></span>
-          </p>
-          <p>Level 
-            <span id="lvl-booster">0</span>
-          </p>
-        </section>
+        <h1>
+          <img class="logo" src="/cookie-clicker/assets/logo-e967bdb1.png" alt="logo poodle-clicker" />
+        </h1>
+        <!-- BTN  COOKIE-CLICKER -->
+        <button id="btn-cookieClicker">
+          <img src="/cookie-clicker/assets/caniche-189d7b40.png" alt="" />
+        </button>
       </header>
 
       <!-- MAIN ////////////  -->
       <main>
-        <!-- BTN  COOKIE-CLICKER -->
-        <button id="btn-cookieClicker"></button>
-        <h1>COOKIE CLICKER</h1>
+        <!-- WRAPPER BTN -->
+        <div class="wrapper-btn">
+          <section id="screen-score" class="btn container-screen">
+            <div class="item-score-timer">
+              <p><span id="score">0</span></p>
+              <p><span id="timer-booster"></span></p>
+            </div>
+            <div class="item-screen-other">
+              <div class="item-screen-other-left">
+                <p><span id="name-option">BTN</span></p>
+                <p><span id="timer-mobile">00:00</span></p>
+              </div>
+              <div class="item-screen-other-right">
+                <p>Cost: <span id="cost-mobile">0</span></p>
+                <p>Level: <span id="lvl-mobile">0</span></p>
+              </div>
+            </div>
+          </section>
+
+          <!-- BLOC BTN-ACTION -->
+          <div class="bloc-btn-action">
+            <!-- BTN AUTO-CLICKER -->
+            <section id="autoClicker">
+              <button id="btn-autoClicker" class="btn btn-action">
+                <div class="icon">
+                  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAMAAACahl6sAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAylpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDkuMC1jMDAxIDc5LmMwMjA0YjJkZWYsIDIwMjMvMDIvMDItMTI6MTQ6MjQgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkQ5OTI5RDY1NkM2ODExRUVCMkIxQjkzRjlEOEY3QUZCIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkQ5OTI5RDY0NkM2ODExRUVCMkIxQjkzRjlEOEY3QUZCIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCAyNC41IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MUM4RDA3NkY2QjU3MTFFRUIyQjFCOTNGOUQ4RjdBRkIiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MUM4RDA3NzA2QjU3MTFFRUIyQjFCOTNGOUQ4RjdBRkIiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6QAT3gAAADAFBMVEX///8AAACdnZ0TExPt7e1MTExNTU2zs7MBAQFvb280NDTW1tZ9fX04ODgeHh739/e+vr5TU1MPDw/q6ura2tovLy/JycnU1NQ/Pz+srKwEBARtbW1YWFjw8PBiYmI3NzcICAinp6eGhoYVFRXh4eH09PS8vLzAwMAaGhqSkpK/v7/s7OylpaUrKyu7u7u0tLTY2Nipqanm5uafn58SEhL5+fn8/Pybm5tmZmZ4eHgpKSkcHBzBwcEHBwdkZGT29vYXFxeVlZUoKCjl5eWHh4cFBQX+/v4YGBgwMDA1NTWEhIRxcXFpaWkjIyOCgoKPj4+YmJjKysrNzc08PDwdHR2ZmZmXl5czMzO5ubl1dXWxsbEhISFWVlZRUVHX19dSUlLDw8Pk5OQCAgJPT09DQ0MDAwPS0tLGxsampqb6+vrf399nZ2cbGxvCwsIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACUoDz6AAAAb3RSTlP//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////wD+VnbVAAADpElEQVR42uzd/U/aQADG8WaLE6cO1BLKpGiCuKFWp2zMlzkGk2KmjfFliTMbQUXIyOL//5sbLTR6F7XC3bXXPU/8abgL33yWLbTClOvBd0PvWvgUhCAEIQhBCEJ8Cuk965ml1sLdnX4RXsQi5HJOIWdJGTLUNomOqKwhJEhW0hA1LCEQgQhEIAIRiEAEIhCBCEQgAhGIQAQiEIEIRCACEYhABCKDiwi7T8pbRK4QiEAEIhCBSMBEKo10OpW6/ZWSU2RyXjGVO1/R6RsuWpxFJpfJh6L7AQ5RnxBSXA+JSKBDIAKRQIlErshdyCliaQ1icTlFSlHysdMB/qz5KHJAhhSG/Q7pT+SgSIacSSoSvBCIQAQigkUmZ47taYbkIlpz7bwzPWl4tQmmSGOq+0tv4kJD2Iv0QmKSi/gVApH/R2QhLCIr1qAhXl5WCxA5TI1r9l7OPlJ0T8hJxEOJAJGs2rSnJq3+Qo4vPFzqECDirmn0FzL+pJA2/5CjsogQESJWBCIQCZNIpnfr7ZR8Y3Ux3fttO1GRIlWD3JYHkaLmfG95t07dsRrrnnOSj4oUGVPVd7enJnIUES1itp3vrqlZ6qGp7kmjuilSJE+eWKAv0NIi/Y2rSK5AnPh71YMI+5CBReiQZFhEkhCBCB+R1fCIbDt7zVxkuHv0VWORv4iij9bstUsZxiJKNuEcPTpX4C/y799mZ8rKW8Yi7tGmqQgQcXdWZS3ywHiI0CEq/xCIQCSoIh/vPzspg4jWCymZ9/5VKYWIO8u59Kodl6izF1sx+wPnlpvF4IrQF7OnFV83sIgbsudvCDuRPYhABCIPhmyERWRE0Z0V5RRxS4z9z+nO1nNyilBFF5qkImRI5WdIRCoTYRGZgAhEIAIRiEAEIhCBCEQeCdlOyS7SW3njh72RvC6niLtZZ5GhNblF3FfxL9YkF3H//5SwiFxCBCIQCU5IIi63yNz3sW+d7exzeEePyJBYvPuTTxXJQ5Y3Ob7HSqiIgRCEyBvyKywhE1NmOELiuSV7z2K6nCFUUUMNScgQQoIW0oYIRCACEYhABCIQgQhCHnupeM4tpC7yg8Ii46uH9c4+HX1g9Pz15pE9Nb8pIsS9qVg92eoso7F6FV/f/fPKXtXzk2AR4v6Qs/GVkcj8c6Efb0iHsLpAtJBBCEIQghCEIAQhCEEIQgIeEmd1D67lb0jEatUSLFZbeu+vyLZVZrOtK39D2A8hCEEIQhAS8JC/AgwAxI1aGceqD/QAAAAASUVORK5CYII=" alt="icon auto-clicker" />
+                </div>
+                <div class="info">
+                  <p>Cost: <span id="cost-autoClicker">50</span></p>
+                  <p>Level: <span id="lvl-autoClicker">0</span></p>
+                </div>
+              </button>
+            </section>
+
+            <!-- BTN MULTIPLICATOR -->
+            <section id="multiplicator">
+              <button id="btn-multiplicator" class="btn btn-action">
+                <div class="icon">
+                  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAMAAACahl6sAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAylpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDkuMC1jMDAxIDc5LmMwMjA0YjJkZWYsIDIwMjMvMDIvMDItMTI6MTQ6MjQgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjk2RjNGNkVCNkM2OTExRUVCMkIxQjkzRjlEOEY3QUZCIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjk2RjNGNkVBNkM2OTExRUVCMkIxQjkzRjlEOEY3QUZCIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCAyNC41IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MUM4RDA3NzM2QjU3MTFFRUIyQjFCOTNGOUQ4RjdBRkIiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MUM4RDA3NzQ2QjU3MTFFRUIyQjFCOTNGOUQ4RjdBRkIiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6zHJsTAAADAFBMVEX///8BAQEAAADFxcVGRkampqbS0tIuLi6xsbFkZGQzMzPe3t4VFRX6+vrT09MxMTHf3990dHQMDAzl5eWjo6Pv7++VlZWcnJwDAwM3NzdERESLi4vU1NRNTU0rKyv8/PwPDw/W1tbBwcECAgI2NjY/Pz+UlJTAwMBaWlpVVVUgICA8PDxDQ0MTExPb29t8fHx5eXnd3d3V1dVwcHCCgoJbW1tMTEz9/f16enr7+/uqqqoqKiq1tbUhISEODg7CwsLIyMjn5+c+Pj7c3Nzz8/P+/v6tra1UVFSurq4pKSnj4+NfX1/Q0NA0NDSysrKTk5Px8fH19fVAQEBpaWkUFBQiIiLLy8uwsLA7OzstLS0oKCjw8PDGxsZ7e3v39/enp6erq6uBgYE1NTUvLy/m5ubq6uqsrKx3d3eQkJCZmZlFRUWamppzc3Ovr6/y8vLExMQfHx/i4uJCQkK2traPj4+ioqKYmJj5+fmFhYWWlpYbGxv09PQwMDBsbGx4eHiDg4Nvb2++vr6dnZ3r6+u5ubkEBAQsLCw5OTmgoKBHR0fo6OjKyso9PT2KiooGBgbMzMx2dnZ+fn5tbW0HBwdgYGC8vLyHh4d9fX2Xl5cnJyfR0dEyMjLDw8O/v7/t7e3Z2dlXV1cmJiZZWVns7Oz/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB8Seo0AAAApXRSTlP//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////wAge84EAAADvklEQVR42uzd508UQRgG8CMogrCHimIXDxBpooDeeXAeXaQKiCgiCoqCgIK9995778r/ufJldl6SyQCyO7MLz/PxCcnOj5DMm5nbwzc2pZgx6mNmj00jPkAAAQQQQABRANGRP/ZDmtuT1Kf93V17IOR3M+jTkflkBftnACF/rfM0QfgK8gABBBBAAAHEVZBzw4sdzfAPIeSZ7ZC9To+KBUJIcqF/PHZCFjo80ZuJQkhnY9l4ZgFkQVzseAABBBBAAAEEEEAAAQQQQAABxH5Ip9OHD4WKIH2LHE5YEUTTAR0ggAACCCCChNJ4aqSlyyGV0fUs0Yi0dDkkmYwY+6SlyyFkkjTjpSUggAACCCCAzGJIHdnEd0pLl0MK1/CckpYY4wEBBBBAAJkNkNYUnr/8kcdIfUha+vpIm8bKMCkrlECGyNhxhkOOkvqktDTeiq5CikgZVQJZbk52jTXJ0GgsMQWXUwFSbgIEEEAAAQQQQFRB7mSsYMl4zCFNpG6WlkaUtBxCyiQlkIvLeK5ySDWpDWnp6yJtyLqlI2ULxnhAAAEEEEAAUQUJZKWyZJFbqBJSJ0rL0AnStshKZyG7ybnNEQ7ZQeoSaWmIXss1Jn9X1xvTr3gkBgQQQAABBBDXQj6RLTiPQw6IPnYiLCds4lWy0lnI2fxVLPn9HLKH1AelZThI2gpZiekXEEAAAQQQ90IKlvK854+MkLpeWoYOk7ZaVqo7fMjE4QOmX0AAAQQQQDwOuUC24EoOKSX1LmlpZAg+ZSosnYXEZ65kyXzDIQ2kLpOW4TbSpshKTL+AAAIIIIB4DdIYzxOw2nTSWkfsNRHStspKZyEvuzezdD+ynviLTBi3rJZ+n3mP2w4fsoSnKAnkidt9Hp5+AQEEEEAAAWQmkAayTb6y2gfCw4f7osMH9ZBUsoyH1hNfl65jKR2w2hzS3rYOH5pIW68P8j17G0v2B9vGXA0QZwIIIIAAAshcgcSt5unhKzlP6gLpmkMD5Ee79EGm8/5If20OS22H/BTF3Vdvv8mSj+MOERBAAAEEEOcgL5R/8uEy/d/vHPJZtPeJIaJXRcJ1o7kso6eVQO4F17IEP3JIManLpXNLWi350SfeuEMc6t3K0vsTl6GAAAIIIHMOQvazoBZIhKwg1///EJIrCTrSNnhzC8vzp7ZATD25kWJ9X3vjiD2QGB0xi4tiJ8bTkPSNPF6GfKua0grdD0kfAwQQQBRC9OR6wG5I5Qaer8mqcu3SF7shNAG/snSMOAkpj1UaQADRDPknwAAA/UqmxU/1LQAAAABJRU5ErkJggg==" alt="icon multiplicator" />
+                </div>
+                <div class="info">
+                  <p>Cost: <span id="cost-multiplicator">100</span></p>
+                  <p>Level: <span id="lvl-multiplicator">0</span></p>
+                </div>
+              </button>
+            </section>
+
+            <!-- BTN BOOSTER -->
+            <section id="booster">
+              <button id="btn-booster" class="btn btn-action">
+                <div class="icon">
+                  <img src="/cookie-clicker/assets/sablier-ebdfbf6c.png" alt="icon booster" />
+                </div>
+                <div class="info">
+                  <p>Cost: <span id="cost-booster">500</span></p>
+                  <p>Level: <span id="lvl-booster">0</span></p>
+                </div>
+              </button>
+            </section>
+          </div>
+        </div>
+
+        <!-- BLOC BTN-INFO + BTN-RESET -->
+        <section id="info-and-reset">
+          <button id="btn-info" class="btn btn-other">
+            <p>INFO</p>
+          </button>
+          <button id="btn-reset" class="btn btn-other">
+            <p>RESET</p>
+          </button>
+        </section>
       </main>
 
-      <!-- FOOTER ////////////  -->
+      <!-- FOOTER //////////// -->
       <footer>
-        <!-- SCORE -->
-        <p>
-          SCORE:
-          <span id="score">0</span>
-          Cookies
-        </p>
+        <p>2023, Ema, Thomas & Eva</p>
       </footer>
+
+      <div class="custom-cursor">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAMAAACahl6sAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAylpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDkuMC1jMDAxIDc5LmMwMjA0YjJkZWYsIDIwMjMvMDIvMDItMTI6MTQ6MjQgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkQ5OTI5RDY1NkM2ODExRUVCMkIxQjkzRjlEOEY3QUZCIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkQ5OTI5RDY0NkM2ODExRUVCMkIxQjkzRjlEOEY3QUZCIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCAyNC41IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MUM4RDA3NkY2QjU3MTFFRUIyQjFCOTNGOUQ4RjdBRkIiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MUM4RDA3NzA2QjU3MTFFRUIyQjFCOTNGOUQ4RjdBRkIiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6QAT3gAAADAFBMVEX///8AAACdnZ0TExPt7e1MTExNTU2zs7MBAQFvb280NDTW1tZ9fX04ODgeHh739/e+vr5TU1MPDw/q6ura2tovLy/JycnU1NQ/Pz+srKwEBARtbW1YWFjw8PBiYmI3NzcICAinp6eGhoYVFRXh4eH09PS8vLzAwMAaGhqSkpK/v7/s7OylpaUrKyu7u7u0tLTY2Nipqanm5uafn58SEhL5+fn8/Pybm5tmZmZ4eHgpKSkcHBzBwcEHBwdkZGT29vYXFxeVlZUoKCjl5eWHh4cFBQX+/v4YGBgwMDA1NTWEhIRxcXFpaWkjIyOCgoKPj4+YmJjKysrNzc08PDwdHR2ZmZmXl5czMzO5ubl1dXWxsbEhISFWVlZRUVHX19dSUlLDw8Pk5OQCAgJPT09DQ0MDAwPS0tLGxsampqb6+vrf399nZ2cbGxvCwsIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACUoDz6AAAAb3RSTlP//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////wD+VnbVAAADpElEQVR42uzd/U/aQADG8WaLE6cO1BLKpGiCuKFWp2zMlzkGk2KmjfFliTMbQUXIyOL//5sbLTR6F7XC3bXXPU/8abgL33yWLbTClOvBd0PvWvgUhCAEIQhBCEJ8Cuk965ml1sLdnX4RXsQi5HJOIWdJGTLUNomOqKwhJEhW0hA1LCEQgQhEIAIRiEAEIhCBCEQgAhGIQAQiEIEIRCACEYhABCKDiwi7T8pbRK4QiEAEIhCBSMBEKo10OpW6/ZWSU2RyXjGVO1/R6RsuWpxFJpfJh6L7AQ5RnxBSXA+JSKBDIAKRQIlErshdyCliaQ1icTlFSlHysdMB/qz5KHJAhhSG/Q7pT+SgSIacSSoSvBCIQAQigkUmZ47taYbkIlpz7bwzPWl4tQmmSGOq+0tv4kJD2Iv0QmKSi/gVApH/R2QhLCIr1qAhXl5WCxA5TI1r9l7OPlJ0T8hJxEOJAJGs2rSnJq3+Qo4vPFzqECDirmn0FzL+pJA2/5CjsogQESJWBCIQCZNIpnfr7ZR8Y3Ux3fttO1GRIlWD3JYHkaLmfG95t07dsRrrnnOSj4oUGVPVd7enJnIUES1itp3vrqlZ6qGp7kmjuilSJE+eWKAv0NIi/Y2rSK5AnPh71YMI+5CBReiQZFhEkhCBCB+R1fCIbDt7zVxkuHv0VWORv4iij9bstUsZxiJKNuEcPTpX4C/y799mZ8rKW8Yi7tGmqQgQcXdWZS3ywHiI0CEq/xCIQCSoIh/vPzspg4jWCymZ9/5VKYWIO8u59Kodl6izF1sx+wPnlpvF4IrQF7OnFV83sIgbsudvCDuRPYhABCIPhmyERWRE0Z0V5RRxS4z9z+nO1nNyilBFF5qkImRI5WdIRCoTYRGZgAhEIAIRiEAEIhCBCEQeCdlOyS7SW3njh72RvC6niLtZZ5GhNblF3FfxL9YkF3H//5SwiFxCBCIQCU5IIi63yNz3sW+d7exzeEePyJBYvPuTTxXJQ5Y3Ob7HSqiIgRCEyBvyKywhE1NmOELiuSV7z2K6nCFUUUMNScgQQoIW0oYIRCACEYhABCIQgQhCHnupeM4tpC7yg8Ii46uH9c4+HX1g9Pz15pE9Nb8pIsS9qVg92eoso7F6FV/f/fPKXtXzk2AR4v6Qs/GVkcj8c6Efb0iHsLpAtJBBCEIQghCEIAQhCEEIQgIeEmd1D67lb0jEatUSLFZbeu+vyLZVZrOtK39D2A8hCEEIQhAS8JC/AgwAxI1aGceqD/QAAAAASUVORK5CYII=" alt="" />
+      </div>
     </div>
     
   </body>
