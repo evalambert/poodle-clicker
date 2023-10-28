@@ -13,8 +13,8 @@
     <div class="overlay" id="overlay"></div>
     <div class="gdpr-modal" id="gdprModal">
       <p>
-        Bienvenue sur le Poodle Clicker !!! Pour accéder accéder aux jeux
-        veuillez accepter les Cookies :-)
+        Bienvenue sur le Poodle Clicker ! Pour commencer la partie merci
+        d'accepter les Crookies :-)
       </p>
       <button class="btn-accept" id="acceptButton">Acceptez</button>
     </div>
@@ -23,34 +23,43 @@
     <div id="bloc-instruction">
       <div class="bloc-instruction">
         <h2>Poddle Clicker</h2>
-        <h3>Le but du jeu est d'obtenir le plus de crookette possible avant le Game Over</h3>
+        <h3>
+          Le but du jeu est d'obtenir le plus de crookette possible !!!
+        </h3>
         <div class="bloc-item">
           <div class="item-instruction">
             <img src="img/caniche-icon.png" alt="caniche-info" />
-            <p>Caresser le Poddle pour obtenir le plus de crookettes</p>
+            <p>Caresser le caniche pour obtenir le plus de crookette</p>
           </div>
           <div class="item-instruction">
             <img src="/img/cookie-icon.png" anlt="os-info" />
-            <p>Attentions ! Manger des croukettes vous ôtes des points</p>
+            <p>Attention ! Manger des crookettes t'ôtes des points !</p>
           </div>
           <div class="item-instruction">
-            <img src="/img/calculator.png" alt="os-info" />
-            <p>Utiliser le multiplicator pour décupler vos gains</p>
+            <img src="/img/dog-biscuit-icon.png" alt="os-info" />
+            <p>
+              Attrape les golden crookettes, elles te permettra de multiplier
+              ton gain par deux
+            </p>
           </div>
           <div class="item-instruction">
             <img src="/img/cursor.png" alt="os-info" />
-            <p>Utiliser l'Auto Click pour recevoir des os automatiquement</p>
+            <p>
+              Utilise l'Auto-clicker pour gagner une crookette toute les
+              secondes
+            </p>
+          </div>
+          <div class="item-instruction">
+            <img src="/img/calculator.png" alt="os-info" />
+            <p>
+              Le Multiplicator te permettra de gagner plusieurs crookettes à la fois
+            </p>
           </div>
           <div class="item-instruction">
             <img src="/img/sablier.png" alt="os-info" />
             <p>
-              Utiliser le Boost de 30 secondes pour augmenter encore plus vos
-              gains
+              Le Booster !!! 30 secondes montre en main pour décupler à l'infini tes gains :-)
             </p>
-          </div>
-          <div class="item-instruction">
-            <img src="/img/dog-biscuit-icon.png" alt="os-info" />
-            <p>Attraper l'os en OR pour muliplier vos gains par 2 !</p>
           </div>
         </div>
         <button id="close-instruction" class="btn-accept">LET'S GO</button>
@@ -64,9 +73,9 @@
         <h3>Résumé de la partie</h3>
         <p>Score : <span id="score-final">0</span></p>
         <p>Temps de jeu : <span id="temps-jeu">time</span></p>
-        <p>LvL Auto Click : <span id="autoClick-final">0</span></p>
+        <p>LvL Auto Clicker : <span id="autoClick-final">0</span></p>
         <p>LvL Multiplicator : <span id="multiplicator-final">0</span></p>
-        <p>LvL Boost : <span id="boost-final">time</span></p>
+        <p>LvL Booster : <span id="boost-final">time</span></p>
       </div>
       <button id="close-GameOver" class="btn-accept">GAME OVER</button>
     </div>
@@ -97,7 +106,6 @@
 
           <!-- BLOC BTN-ACTION -->
           <div class="bloc-btn-action">
-            
             <!-- BTN AUTO-CLICKER -->
             <section id="autoClicker">
               <button id="btn-autoClicker" class="btn btn-action">

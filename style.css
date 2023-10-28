@@ -43,11 +43,11 @@ button:active {
   box-shadow:
     3px 3px 3px 0px rgba(255, 255, 255, 0.63) inset,
     -3px -3px 3px 0px rgba(0, 0, 0, 0.75) inset;
-  cursor: none;
+  /* cursor: none; */
 }
 
 /* MQ - BODY */
-@media (max-width: 992px) {
+@media (max-width: 768px) {
   .custom-cursor {
     display: none;
   }
@@ -73,8 +73,9 @@ button:active {
 
 /* OVERLAY */
 .overlay {
-  display: none;
+  /* display: none; */
   position: fixed;
+  background-color: #b5b1e7c1;
   top: 0;
   left: 0;
   width: 100%;
@@ -107,13 +108,13 @@ button:active {
   gap: 20px; */
   padding: 20px;
 }
-.bloc-instruction h2 {
+h2 {
   font-family: "beloved";
   font-size: 100px;
   line-height: 70px;
-  padding: 30px;
+  padding: 23px;
 }
-.bloc-instruction h3 {
+h3 {
   font-family: "6x7oct-bold";
   font-size: 16px;
 }
@@ -124,12 +125,12 @@ button:active {
 .bloc-instruction p {
   font-family: "6x7oct-bold";
 }
-.bloc-item{
+.bloc-item {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
-.item-instruction{
+.item-instruction {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -138,7 +139,7 @@ button:active {
 }
 
 /* MQ - INSTRUCTIONS */
-@media (max-width: 992px) {
+@media (max-width: 768px) {
   /* INSTRUCTION */
   #bloc-instruction {
     width: 80%;
@@ -149,7 +150,6 @@ button:active {
     line-height: 45px;
     padding: 10px;
   }
-
 }
 
 /* GAME -OVER //////////////////////////////////////*/
@@ -204,7 +204,7 @@ button:active {
 }
 
 /* MQ - WRAPPER ///////////////////////*/
-@media (max-width: 992px) {
+@media (max-width: 768px) {
   /* WRAPPER //////////// */
   .wrapper {
     display: flex;
@@ -255,7 +255,7 @@ img.logo {
 }
 
 /* MQ - HEADER */
-@media (max-width: 992px) {
+@media (max-width: 768px) {
   /* PODDLE COOKIE-CLICKER */
   #btn-cookieClicker {
     width: 70%;
@@ -296,7 +296,7 @@ main .btn {
 
 /* SCREEN */
 #screen-score {
-  min-width: 240px;
+  min-width: 270px;
   width: 100%;
   box-shadow: 5px 5px 5px 0px rgba(56, 56, 56, 0.528) inset;
   display: flex;
@@ -316,7 +316,7 @@ main .btn {
   gap: 20px;
 }
 .btn-action {
-  min-width: 240px;
+  min-width: 270px;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -339,6 +339,7 @@ main .btn {
 /* BTN OTHER */
 .btn-other {
   width: 50%;
+  min-width: 125px;
   box-shadow:
     3px 3px 3px 0px rgba(255, 255, 255, 0.63) inset,
     -3px -3px 3px 0px rgba(0, 0, 0, 0.75) inset;
@@ -353,11 +354,11 @@ main .btn {
 }
 
 /* MQ -  MAIN */
-@media (max-width: 992px) {
+@media (max-width: 768px) {
   main {
     width: 90%;
     gap: 10px;
-    margin: 0 auto 30px;
+    margin: 0 auto;
   }
   main .btn {
     padding: 15px;
@@ -365,11 +366,10 @@ main .btn {
     max-height: 130px;
     font-size: 15px;
     /*max-width: 130px;
-    */  
+    */
   }
   /* WRAPPER - BTN */
   .wrapper-btn {
-    display: flex;
     width: auto;
     gap: 10px;
   }
@@ -385,9 +385,10 @@ main .btn {
   }
   .btn-action .info {
     display: none;
+    min-width: 130px;
   }
   .btn-action .icon {
-    height:auto;
+    height: auto;
   }
 
   /* BTN OTHER */
@@ -403,5 +404,5 @@ footer {
 }
 
 /* MQ - FOOTER */
-@media (max-width: 992px) {
+@media (max-width: 768px) {
 }
