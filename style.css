@@ -280,7 +280,7 @@ img.logo {
 @media (max-width: 768px) {
   /* PODDLE COOKIE-CLICKER */
   #btn-cookieClicker {
-    width: 70%;
+    width: 80%;
     top: 0px;
   }
   header {
@@ -293,7 +293,7 @@ img.logo {
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 375px) {
   /* PODDLE COOKIE-CLICKER */
   #btn-cookieClicker {
     width: 60%;
