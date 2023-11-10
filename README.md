@@ -2,8 +2,7 @@
 
 ## 🔗 LIENS PROJET
 
-- **Projet en ligne :** [https://emignox.github.io/cookie-clicker/ ](https://emignox.github.io/cookie-clicker/ "lien projet cookie-clicker en ligne")
-- **Github :** [https://github.com/emignox/cookie-clicker](https://github.com/emignox/cookie-clicker "lien projet projet Github cookie-clicker")
+- **Projet en ligne :** [https://evalambert.github.io/cookie-clicker/ ](https://evalambert.github.io/cookie-clicker/ "lien projet cookie-clicker en ligne")
 
 ## 📌 FICHE PROJET
 
@@ -11,20 +10,11 @@
 - **Type :** Challenge
 - **Durée :** 5 jours
 - **Deadline :** 30/10/23 à 09h
-- **Équipe :** Groupe de 3 personnes
-
-## 🤜🤛 ÉQUIPAGE
-
-- [Emanuele Polizotto](https://github.com/emignox "lien github Emanuele Polizotto")
-- [Thomas Syben](https://github.com/Harbingar "lien github Thomas Syben")
-- [Eva Lambert](https://github.com/evalambert "lien github Eva Lambert")
+- **Équipe :** Solo
 
 ## 🎯 OBJECTIFS
 
-- Renforcer nos compétences en JavaScript
-- Apprendre à travailler en équipe :
-  - Organisation et repartition du travail
-  - Apprendre à gérer les conflits Git et Gihub
+- Renforcer mes compétences en JavaScript
 
 ## ✅ CRITÈRES D'ÉVALUATION
 
@@ -51,7 +41,7 @@
 
 ## ⏰ ÉTAT D'AVANCEMENT
 
-Terminé 🙃 mais nous aimerions rendre la version mobile plus fonctionelle.
+Terminé 🙃 mais j'aimerais rendre la version mobile plus fonctionelle.
 
 ## 👀 MAQUETTE
 
