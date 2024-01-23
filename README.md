@@ -2,7 +2,7 @@
 
 ## 🔗 LIENS PROJET
 
-- **Projet en ligne :** [https://evalambert.github.io/cookie-clicker/ ](https://evalambert.github.io/cookie-clicker/ "lien projet cookie-clicker en ligne")
+- **Projet en ligne :** [https://evalambert.github.io/poodle-clicker/ ](https://evalambert.github.io/poodle-clicker/ "lien projet cookie-clicker en ligne")
 
 ## 📌 FICHE PROJET
 
