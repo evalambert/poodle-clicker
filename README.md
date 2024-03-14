@@ -1,5 +1,7 @@
 # 🍪 🐩 PODDLE-CLICKER
 
+Poodle Clicker est un jeu dont l'objectif est de produire un maximum de cookies 
+
 ## 🔗 LIENS PROJET
 
 - **Projet en ligne :** [https://evalambert.github.io/poodle-clicker/ ](https://evalambert.github.io/poodle-clicker/ "lien projet cookie-clicker en ligne")
